@@ -1,22 +1,40 @@
-import React from 'react';
+import React from "react";
+import styled from "styled-components";
 
-const CustomResume = ({ name, email, experiences }) => {
+const CustomStyle = styled.div`
+  padding: 10px;
+  h1 {
+    margin: 0px;
+  }
+  h3 {
+    margin-top: 20px;
+    text-decoration: underline;
+  }
+`;
+
+const CustomResume = ({
+  name,
+  phoneNumber,
+  email,
+  location,
+  links,
+  sections,
+}) => {
   return (
-    <div>
+    <CustomStyle>
       <h1>{name}</h1>
-      <p>{email}</p>
-      <h2>Professional Summary:</h2>
-      <h2>Skills:</h2>
-      <h2>Experience:</h2>
-      {experiences.map((experience, index) => (
+      <p>
+        {phoneNumber} {email} {location}
+      </p>
+      <p>{links}</p>
+      {sections.map((section, index) => (
         <div key={index}>
-          <h3>{experience.jobTitle}</h3>
-          <p>{experience.jobDuties}</p>
+          <h3>{section.sectionTitle}</h3>
+          <h4>{section.sectionSubtitle}</h4>
+          <p>{section.description}</p>
         </div>
       ))}
-      <h2>Education:</h2>
-
-    </div>
+    </CustomStyle>
   );
 };
 

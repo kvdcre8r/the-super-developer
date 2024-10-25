@@ -5,7 +5,7 @@ import Header from "./Header";
 
 // Styled Components
 const MainStyle = styled.div`
-  font-family: monospace;
+  font-family: arial;
   margin: 10px;
   background-color: lightyellow;
   color: black;
@@ -24,6 +24,11 @@ const SelectorStyle = styled.div`
   background-color: #30599b;
   p {
     margin: 0px;
+  }
+  h3 {
+    border-bottom: 2px solid lightcyan;
+    margin-bottom: 5px;
+    margin-right: 10px;
   }
   select {
     color: rgb(62, 92, 126);
@@ -145,8 +150,11 @@ const Selectors = () => {
   const [fontFamily, setFontFamily] = useState("");
   const [resumeData, setResumeData] = useState({
     name: "",
+    phoneNumber: "",
     email: "",
-    experiences: [{ jobTitle: "", jobDuties: "" }],
+    location: "",
+    links: "",
+    sections: [{ sectionTitle: "", sectionSubtitle: "", description: "" }],
   });
   const targetRef = useRef(null);
 
@@ -184,21 +192,24 @@ const Selectors = () => {
     setResumeData((prevData) => ({ ...prevData, [name]: value }));
   };
 
-  const handleExperienceChange = (index, event) => {
+  const handleSectionChange = (index, event) => {
     const { name, value } = event.target;
-    const newExperiences = resumeData.experiences.map((experience, idx) => {
+    const newSections = resumeData.sections.map((section, idx) => {
       if (idx === index) {
-        return { ...experience, [name]: value };
+        return { ...section, [name]: value };
       }
-      return experience;
+      return section;
     });
-    setResumeData((prevData) => ({ ...prevData, experiences: newExperiences }));
+    setResumeData((prevData) => ({ ...prevData, sections: newSections }));
   };
 
-  const addExperience = () => {
+  const addSection = () => {
     setResumeData((prevData) => ({
       ...prevData,
-      experiences: [...prevData.experiences, { jobTitle: "", jobDuties: "" }],
+      sections: [
+        ...prevData.sections,
+        { sectionTitle: "", sectionSubtitle: "", description: "" },
+      ],
     }));
   };
 
@@ -208,49 +219,7 @@ const Selectors = () => {
       <MainStyle>
         <SelectorStyle>
           <div>
-            <h3>Customize Your Resume:</h3>
-            <p>Font Size:</p>
-            <select value={fontSize} onChange={handleFontSizeChange}>
-              <option value="">Select a size</option>
-              <SmallOption value="8px">small</SmallOption>
-              <MediumOption value="12px">medium</MediumOption>
-              <LargeOption value="16px">large</LargeOption>
-            </select>
-            <p>Text Color:</p>
-            <select value={fontColor} onChange={handleFontColorChange}>
-              <option value="">Select a color</option>
-              <NavyOption value="navy">Navy</NavyOption>
-              <PurpleOption value="purple">Purple</PurpleOption>
-              <GreenOption value="darkgreen">Green</GreenOption>
-              <GreenYellowOption value="greenyellow">
-                Greenyellow
-              </GreenYellowOption>
-              <WhiteOption value="white">White</WhiteOption>
-            </select>
-            <p>Background Color:</p>
-            <select value={bgcolor} onChange={handlebgcolorChange}>
-              <option value="">Select a color</option>
-              <PinkOption value="Pink">Pink</PinkOption>
-              <GoldOption value="gold">Gold</GoldOption>
-              <CyanOption value="cyan">Cyan</CyanOption>
-              <NavyOption value="navy">Navy</NavyOption>
-              <BlackOption value="black">Black</BlackOption>
-            </select>
-            <p>Font Family:</p>
-            <select value={fontFamily} onChange={handleFontFamilyChange}>
-              <option value="">Select a font</option>
-              <SpyAgencyOption value="spyagency">Spy Agency</SpyAgencyOption>
-              <ChampionOption value="champion">Champion</ChampionOption>
-              <MonospaceOption value="monospace">Monospace</MonospaceOption>
-              <OpenSansOption value="open-sans">Open Sans</OpenSansOption>
-              <CourgetteOption value="courgette">Courgette</CourgetteOption>
-              <JosefinSansOption value="josefin-sans">
-                Josefin Sans
-              </JosefinSansOption>
-            </select>
-          </div>
-          <div>
-            <h3>Enter Resume Information:</h3>
+            <h3>Your Information</h3>
             <form>
               <label>
                 Name:
@@ -258,6 +227,16 @@ const Selectors = () => {
                   type="text"
                   name="name"
                   value={resumeData.name}
+                  onChange={handleInputChange}
+                />
+              </label>
+              <br />
+              <label>
+                Phone Number:
+                <input
+                  type="tel"
+                  name="phoneNumber"
+                  value={resumeData.phoneNumber}
                   onChange={handleInputChange}
                 />
               </label>
@@ -272,32 +251,116 @@ const Selectors = () => {
                 />
               </label>
               <br />
-              <h3>Experience:</h3>
-              {resumeData.experiences.map((experience, index) => (
+              <label>
+                Location:
+                <input
+                  type="text"
+                  name="location"
+                  value={resumeData.location}
+                  onChange={handleInputChange}
+                />
+              </label>
+              <br />
+              <label>
+                Personal Links:
+                <input
+                  type="text"
+                  name="links"
+                  value={resumeData.links}
+                  onChange={handleInputChange}
+                />
+              </label>
+            </form>
+          </div>
+          <div>
+            <h3>Customization</h3>
+            <p>Font:</p>
+            <select value={fontFamily} onChange={handleFontFamilyChange}>
+              <option value="">Select a font</option>
+              <SpyAgencyOption value="spyagency">Spy Agency</SpyAgencyOption>
+              <ChampionOption value="champion">Champion</ChampionOption>
+              <MonospaceOption value="monospace">Monospace</MonospaceOption>
+              <OpenSansOption value="open-sans">Open Sans</OpenSansOption>
+              <CourgetteOption value="courgette">Courgette</CourgetteOption>
+              <JosefinSansOption value="josefin-sans">
+                Josefin Sans
+              </JosefinSansOption>
+            </select>
+            <p>Font Size:</p>
+            <select value={fontSize} onChange={handleFontSizeChange}>
+              <option value="">Select a size</option>
+              <SmallOption value="8px">small</SmallOption>
+              <MediumOption value="12px">medium</MediumOption>
+              <LargeOption value="16px">large</LargeOption>
+            </select>
+            <p>Text Color:</p>
+            <select value={fontColor} onChange={handleFontColorChange}>
+              <option value="">Select a color</option>
+              <PinkOption value="Pink">Pink</PinkOption>
+              <GoldOption value="gold">Gold</GoldOption>
+              <CyanOption value="cyan">Cyan</CyanOption>
+            <NavyOption value="navy">Navy</NavyOption>
+              <PurpleOption value="purple">Purple</PurpleOption>
+              <GreenOption value="darkgreen">Green</GreenOption>
+              <GreenYellowOption value="greenyellow">
+                Greenyellow
+              </GreenYellowOption>
+              <WhiteOption value="white">White</WhiteOption>
+              <BlackOption value="black">Black</BlackOption>
+            </select>
+            <p>Background Color:</p>
+            <select value={bgcolor} onChange={handlebgcolorChange}>
+              <option value="">Select a color</option>
+              <PinkOption value="Pink">Pink</PinkOption>
+              <GoldOption value="gold">Gold</GoldOption>
+              <CyanOption value="cyan">Cyan</CyanOption>
+            <NavyOption value="navy">Navy</NavyOption>
+              <PurpleOption value="purple">Purple</PurpleOption>
+              <GreenOption value="darkgreen">Green</GreenOption>
+              <GreenYellowOption value="greenyellow">
+                Greenyellow
+              </GreenYellowOption>
+              <WhiteOption value="white">White</WhiteOption>
+              <BlackOption value="black">Black</BlackOption>
+            </select>
+            <br />
+            <form>
+              <h3>Resume Sections</h3>
+              {resumeData.sections.map((section, index) => (
                 <div key={index}>
                   <label>
-                    Job Title:
+                    Section Title:
                     <input
                       type="text"
-                      name="jobTitle"
-                      value={experience.jobTitle}
-                      onChange={(event) => handleExperienceChange(index, event)}
+                      name="sectionTitle"
+                      value={section.sectionTitle}
+                      onChange={(event) => handleSectionChange(index, event)}
                     />
                   </label>
                   <br />
                   <label>
-                    Job Duties:
+                    Section Subtitle:
+                    <input
+                      type="text"
+                      name="sectionSubtitle"
+                      value={section.sectionSubtitle}
+                      onChange={(event) => handleSectionChange(index, event)}
+                    />
+                  </label>
+                  <br />
+                  <label>
+                    Description:
                     <textarea
-                      name="jobDuties"
-                      value={experience.jobDuties}
-                      onChange={(event) => handleExperienceChange(index, event)}
+                      name="description"
+                      value={section.description}
+                      onChange={(event) => handleSectionChange(index, event)}
                     />
                   </label>
                   <br />
                 </div>
               ))}
-              <button type="button" onClick={addExperience}>
-                Add Experience
+              <button type="button" onClick={addSection}>
+                Add Section
               </button>
             </form>
           </div>

@@ -18,19 +18,19 @@ const CustomResume = ({
   email,
   location,
   links,
-  sections,
+  sections = [],
 }) => {
   return (
     <CustomStyle>
       <h1>{name}</h1>
-      <p>
-        {phoneNumber} {email} {location}
-      </p>
+      <p>{phoneNumber}</p>
+      <p>{email}</p>
+      <p>{location}</p>
       <p>{links}</p>
       {sections.map((section, index) => (
         <div key={index}>
-          <h3>{section.sectionTitle}</h3>
-          <h4>{section.sectionSubtitle}</h4>
+          <h4>{section.sectionTitle}</h4>
+          <h5>{section.sectionSubtitle}</h5>
           <p>{section.description}</p>
         </div>
       ))}

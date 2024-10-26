@@ -2,6 +2,7 @@ import React, { useState, useRef } from "react";
 import styled from "styled-components";
 import CustomResume from "./CustomResume";
 import Header from "./Header";
+import Container from "./Container.style";
 
 // Styled Components
 const MainStyle = styled.div`
@@ -52,89 +53,150 @@ const TargetComponentWrapper = styled.div`
 
 const Option = styled.option``;
 
-const SmallOption = styled(Option)`
-  font-size: 8px;
-`;
+const fontSizes = [
+  {
+    value: "8px",
+    label: "Small",
+    component: styled(Option)`
+      font-size: 8px;
+    `,
+  },
+  {
+    value: "12px",
+    label: "Medium",
+    component: styled(Option)`
+      font-size: 12px;
+    `,
+  },
+  {
+    value: "16px",
+    label: "Large",
+    component: styled(Option)`
+      font-size: 16px;
+    `,
+  },
+];
 
-const MediumOption = styled(Option)`
-  font-size: 12px;
-`;
+const textColors = [
+  {
+    value: "pink",
+    label: "Pink",
+    component: styled(Option)`
+      color: black;
+      background-color: pink;
+    `,
+  },
+  {
+    value: "gold",
+    label: "Gold",
+    component: styled(Option)`
+      color: black;
+      background-color: gold;
+    `,
+  },
+  {
+    value: "cyan",
+    label: "Cyan",
+    component: styled(Option)`
+      color: black;
+      background-color: cyan;
+    `,
+  },
+  {
+    value: "navy",
+    label: "Navy",
+    component: styled(Option)`
+      color: white;
+      background-color: navy;
+    `,
+  },
+  {
+    value: "purple",
+    label: "Purple",
+    component: styled(Option)`
+      color: white;
+      background-color: purple;
+    `,
+  },
+  {
+    value: "darkgreen",
+    label: "Green",
+    component: styled(Option)`
+      color: white;
+      background-color: darkgreen;
+    `,
+  },
+  {
+    value: "white",
+    label: "White",
+    component: styled(Option)`
+      color: black;
+      background-color: white;
+    `,
+  },
+  {
+    value: "greenyellow",
+    label: "Greenyellow",
+    component: styled(Option)`
+      color: black;
+      background-color: greenyellow;
+    `,
+  },
+  {
+    value: "black",
+    label: "Black",
+    component: styled(Option)`
+      color: white;
+      background-color: black;
+    `,
+  },
+];
 
-const LargeOption = styled(Option)`
-  font-size: 16px;
-`;
+const fontFamilies = [
+  {
+    value: "spyagency",
+    label: "Spy Agency",
+    component: styled(Option)`
+      font-family: spyagency;
+    `,
+  },
+  {
+    value: "champion",
+    label: "Champion",
+    component: styled(Option)`
+      font-family: champion;
+    `,
+  },
+  {
+    value: "monospace",
+    label: "Monospace",
+    component: styled(Option)`
+      font-family: monospace;
+    `,
+  },
+  {
+    value: "open-sans",
+    label: "Open Sans",
+    component: styled(Option)`
+      font-family: open-sans;
+    `,
+  },
+  {
+    value: "courgette",
+    label: "Courgette",
+    component: styled(Option)`
+      font-family: courgette;
+    `,
+  },
+  {
+    value: "josefin-sans",
+    label: "Josefin Sans",
+    component: styled(Option)`
+      font-family: josefin-sans;
+    `,
+  },
+];
 
-const PinkOption = styled(Option)`
-  color: black;
-  background-color: pink;
-`;
-
-const GoldOption = styled(Option)`
-  color: black;
-  background-color: gold;
-`;
-
-const CyanOption = styled(Option)`
-  color: black;
-  background-color: cyan;
-`;
-
-const NavyOption = styled(Option)`
-  color: white;
-  background-color: navy;
-`;
-
-const PurpleOption = styled(Option)`
-  color: white;
-  background-color: purple;
-`;
-
-const GreenOption = styled(Option)`
-  color: white;
-  background-color: darkgreen;
-`;
-
-const WhiteOption = styled(Option)`
-  color: black;
-  background-color: white;
-`;
-
-const GreenYellowOption = styled(Option)`
-  color: black;
-  background-color: greenyellow;
-`;
-
-const BlackOption = styled(Option)`
-  color: white;
-  background-color: black;
-`;
-
-const SpyAgencyOption = styled(Option)`
-  font-family: "spyagency";
-  font-size: 0.8em;
-`;
-
-const ChampionOption = styled(Option)`
-  font-family: "champion";
-`;
-
-const MonospaceOption = styled(Option)`
-  font-family: monospace;
-`;
-
-const OpenSansOption = styled(Option)`
-  font-family: "open-sans";
-`;
-
-const CourgetteOption = styled(Option)`
-  font-family: "courgette";
-`;
-
-const JosefinSansOption = styled(Option)`
-  font-family: "josefin-sans";
-`;
-
-// Components
 const TargetComponent = React.forwardRef((props, ref) => {
   return (
     <TargetComponentWrapper ref={ref} bgcolor={props.bgcolor}>
@@ -145,7 +207,7 @@ const TargetComponent = React.forwardRef((props, ref) => {
 
 const Selectors = () => {
   const [fontSize, setFontSize] = useState("");
-  const [bgcolor, setbgcolor] = useState("");
+  const [bgColor, setBgColor] = useState("");
   const [fontColor, setFontColor] = useState("");
   const [fontFamily, setFontFamily] = useState("");
   const [resumeData, setResumeData] = useState({
@@ -166,9 +228,9 @@ const Selectors = () => {
     }
   };
 
-  const handlebgcolorChange = (event) => {
+  const handleBgColorChange = (event) => {
     const color = event.target.value;
-    setbgcolor(color);
+    setBgColor(color);
   };
 
   const handleFontColorChange = (event) => {
@@ -215,11 +277,10 @@ const Selectors = () => {
 
   return (
     <div>
-      <Header />
       <MainStyle>
         <SelectorStyle>
           <div>
-            <h3>Your Information</h3>
+            <h3>Your Information:</h3>
             <form>
               <label>
                 Name:
@@ -262,7 +323,7 @@ const Selectors = () => {
               </label>
               <br />
               <label>
-                Personal Links:
+                Links:
                 <input
                   type="text"
                   name="links"
@@ -273,59 +334,50 @@ const Selectors = () => {
             </form>
           </div>
           <div>
-            <h3>Customization</h3>
-            <p>Font:</p>
-            <select value={fontFamily} onChange={handleFontFamilyChange}>
-              <option value="">Select a font</option>
-              <SpyAgencyOption value="spyagency">Spy Agency</SpyAgencyOption>
-              <ChampionOption value="champion">Champion</ChampionOption>
-              <MonospaceOption value="monospace">Monospace</MonospaceOption>
-              <OpenSansOption value="open-sans">Open Sans</OpenSansOption>
-              <CourgetteOption value="courgette">Courgette</CourgetteOption>
-              <JosefinSansOption value="josefin-sans">
-                Josefin Sans
-              </JosefinSansOption>
-            </select>
+            <h3>Customization:</h3>
             <p>Font Size:</p>
             <select value={fontSize} onChange={handleFontSizeChange}>
               <option value="">Select a size</option>
-              <SmallOption value="8px">small</SmallOption>
-              <MediumOption value="12px">medium</MediumOption>
-              <LargeOption value="16px">large</LargeOption>
+              {fontSizes.map(({ value, label, component: FontSizeOption }) => (
+                <FontSizeOption key={value} value={value}>
+                  {label}
+                </FontSizeOption>
+              ))}
             </select>
             <p>Text Color:</p>
             <select value={fontColor} onChange={handleFontColorChange}>
               <option value="">Select a color</option>
-              <PinkOption value="Pink">Pink</PinkOption>
-              <GoldOption value="gold">Gold</GoldOption>
-              <CyanOption value="cyan">Cyan</CyanOption>
-            <NavyOption value="navy">Navy</NavyOption>
-              <PurpleOption value="purple">Purple</PurpleOption>
-              <GreenOption value="darkgreen">Green</GreenOption>
-              <GreenYellowOption value="greenyellow">
-                Greenyellow
-              </GreenYellowOption>
-              <WhiteOption value="white">White</WhiteOption>
-              <BlackOption value="black">Black</BlackOption>
+              {textColors.map(
+                ({ value, label, component: TextColorOption }) => (
+                  <TextColorOption key={value} value={value}>
+                    {label}
+                  </TextColorOption>
+                )
+              )}
             </select>
             <p>Background Color:</p>
-            <select value={bgcolor} onChange={handlebgcolorChange}>
+            <select value={bgColor} onChange={handleBgColorChange}>
               <option value="">Select a color</option>
-              <PinkOption value="Pink">Pink</PinkOption>
-              <GoldOption value="gold">Gold</GoldOption>
-              <CyanOption value="cyan">Cyan</CyanOption>
-            <NavyOption value="navy">Navy</NavyOption>
-              <PurpleOption value="purple">Purple</PurpleOption>
-              <GreenOption value="darkgreen">Green</GreenOption>
-              <GreenYellowOption value="greenyellow">
-                Greenyellow
-              </GreenYellowOption>
-              <WhiteOption value="white">White</WhiteOption>
-              <BlackOption value="black">Black</BlackOption>
+              {textColors.map(({ value, label, component: BgColorOption }) => (
+                <BgColorOption key={value} value={value}>
+                  {label}
+                </BgColorOption>
+              ))}
+            </select>
+            <p>Font Family:</p>
+            <select value={fontFamily} onChange={handleFontFamilyChange}>
+              <option value="">Select a font</option>
+              {fontFamilies.map(
+                ({ value, label, component: FontFamilyOption }) => (
+                  <FontFamilyOption key={value} value={value}>
+                    {label}
+                  </FontFamilyOption>
+                )
+              )}
             </select>
             <br />
             <form>
-              <h3>Resume Sections</h3>
+              <h3>Resume Sections:</h3>
               {resumeData.sections.map((section, index) => (
                 <div key={index}>
                   <label>
@@ -368,7 +420,7 @@ const Selectors = () => {
         <TargetComponent
           ref={targetRef}
           {...resumeData}
-          bgcolor={bgcolor}
+          bgcolor={bgColor}
           style={{ fontFamily }}
         />
       </MainStyle>
@@ -376,12 +428,13 @@ const Selectors = () => {
   );
 };
 
-function ThemeCustom() {
+function Custom() {
   return (
-    <div>
+    <Container>
+      <Header />
       <Selectors />
-    </div>
+    </Container>
   );
 }
 
-export default ThemeCustom;
+export default Custom;

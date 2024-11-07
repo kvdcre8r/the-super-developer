@@ -3,6 +3,7 @@ import styled from "styled-components";
 import CustomResume from "./CustomResume";
 import Header from "./Header";
 import Container from "./Container.style";
+import { GlobalStyles } from "../GlobalStyles.style";
 
 // Styled Components
 const MainStyle = styled.div`
@@ -23,14 +24,24 @@ const SelectorStyle = styled.div`
   font-family: open-sans;
   color: lightcyan;
   background-color: #30599b;
+  overflow-y: auto;
+  scrollbar-width: thin;
+  scrollbar-color: #30599b #f1f1f1;
+  width: 260px;
+  height: 100vh;
+  padding: 0px 0px 10px 10px;
+  border: 2px solid white;
   p {
     margin: 0px;
   }
   h3 {
     border-bottom: 2px solid lightcyan;
-    margin-bottom: 5px;
+    margin-bottom: 0px;
     margin-right: 10px;
   }
+.section-title {
+  padding-top: 20px;
+}
   select {
     color: rgb(62, 92, 126);
     background-color: #f0f0f0;
@@ -41,6 +52,7 @@ const SelectorStyle = styled.div`
     &:focus {
       outline: none;
       border-color: #30599b;
+      background-color: white;
     }
   }
 `;
@@ -48,6 +60,7 @@ const SelectorStyle = styled.div`
 const TargetComponentWrapper = styled.div`
   width: 100%;
   padding: 10px;
+  border-left: 5px solid #30599b;
   background-color: ${(props) => props.bgcolor || "transparent"};
 `;
 
@@ -158,6 +171,7 @@ const fontFamilies = [
     label: "Spy Agency",
     component: styled(Option)`
       font-family: spyagency;
+      font-size: 0.7em;
     `,
   },
   {
@@ -216,7 +230,7 @@ const Selectors = () => {
     email: "",
     location: "",
     links: "",
-    sections: [{ sectionTitle: "", sectionSubtitle: "", description: "" }],
+    sections: [{ sectionTitle: "", sectionSubtitle: "", description: "", bulletPoint1: "", bulletPoint2: "", bulletPoint3: "" }],
   });
   const targetRef = useRef(null);
 
@@ -270,7 +284,7 @@ const Selectors = () => {
       ...prevData,
       sections: [
         ...prevData.sections,
-        { sectionTitle: "", sectionSubtitle: "", description: "" },
+        { sectionTitle: "", sectionSubtitle: "", description: "", bulletPoint1: "", bulletPoint2: "", bulletPoint3: "" },
       ],
     }));
   };
@@ -284,6 +298,7 @@ const Selectors = () => {
             <form>
               <label>
                 Name:
+                <br />
                 <input
                   type="text"
                   name="name"
@@ -294,6 +309,7 @@ const Selectors = () => {
               <br />
               <label>
                 Phone Number:
+                <br />
                 <input
                   type="tel"
                   name="phoneNumber"
@@ -304,6 +320,7 @@ const Selectors = () => {
               <br />
               <label>
                 Email:
+                <br />
                 <input
                   type="email"
                   name="email"
@@ -314,6 +331,7 @@ const Selectors = () => {
               <br />
               <label>
                 Location:
+                <br />
                 <input
                   type="text"
                   name="location"
@@ -324,6 +342,7 @@ const Selectors = () => {
               <br />
               <label>
                 Links:
+                <br />
                 <input
                   type="text"
                   name="links"
@@ -335,6 +354,17 @@ const Selectors = () => {
           </div>
           <div>
             <h3>Customization:</h3>
+            <p>Font:</p>
+            <select value={fontFamily} onChange={handleFontFamilyChange}>
+              <option value="">Select a font</option>
+              {fontFamilies.map(
+                ({ value, label, component: FontFamilyOption }) => (
+                  <FontFamilyOption key={value} value={value}>
+                    {label}
+                  </FontFamilyOption>
+                )
+              )}
+            </select>{" "}
             <p>Font Size:</p>
             <select value={fontSize} onChange={handleFontSizeChange}>
               <option value="">Select a size</option>
@@ -364,24 +394,13 @@ const Selectors = () => {
                 </BgColorOption>
               ))}
             </select>
-            <p>Font Family:</p>
-            <select value={fontFamily} onChange={handleFontFamilyChange}>
-              <option value="">Select a font</option>
-              {fontFamilies.map(
-                ({ value, label, component: FontFamilyOption }) => (
-                  <FontFamilyOption key={value} value={value}>
-                    {label}
-                  </FontFamilyOption>
-                )
-              )}
-            </select>
             <br />
             <form>
               <h3>Resume Sections:</h3>
               {resumeData.sections.map((section, index) => (
                 <div key={index}>
                   <label>
-                    Section Title:
+                    <p className="section-title">Section Title:</p>
                     <input
                       type="text"
                       name="sectionTitle"
@@ -392,6 +411,7 @@ const Selectors = () => {
                   <br />
                   <label>
                     Section Subtitle:
+                    <br />
                     <input
                       type="text"
                       name="sectionSubtitle"
@@ -402,6 +422,7 @@ const Selectors = () => {
                   <br />
                   <label>
                     Description:
+                    <br />
                     <textarea
                       name="description"
                       value={section.description}
@@ -409,6 +430,38 @@ const Selectors = () => {
                     />
                   </label>
                   <br />
+                  <label>
+                    Bullet Point 1:
+                    <br />
+                    <input
+                      type="text"
+                      name="bulletPoint1"
+                      value={section.bulletPoint1}
+                      onChange={(event) => handleSectionChange(index, event)}
+                    />
+                  </label>
+                  <br />
+                  <label>
+                    Bullet Point 2:
+                    <br />
+                    <input
+                      type="text"
+                      name="bulletPoint2"
+                      value={section.bulletPoint2}
+                      onChange={(event) => handleSectionChange(index, event)}
+                    />
+                  </label>
+                  <br />
+                  <label>
+                    Bullet Point 3:
+                    <br />
+                    <input
+                      type="text"
+                      name="bulletPoint3"
+                      value={section.bulletPoint3}
+                      onChange={(event) => handleSectionChange(index, event)}
+                    />
+                  </label>
                 </div>
               ))}
               <button type="button" onClick={addSection}>
@@ -431,6 +484,7 @@ const Selectors = () => {
 function Custom() {
   return (
     <Container>
+      <GlobalStyles />
       <Header />
       <Selectors />
     </Container>

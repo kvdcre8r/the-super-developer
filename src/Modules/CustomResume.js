@@ -3,12 +3,22 @@ import styled from "styled-components";
 
 const CustomStyle = styled.div`
   padding: 10px;
-  h1 {
+  h1,
+  span {
     margin: 0px;
   }
-  h3 {
-    margin-top: 20px;
+  h2 {
+    margin: 20px 0px 10px 0px;
     text-decoration: underline;
+  }
+  h3, h4, p {
+    margin: 5px;
+  }
+  h4 {
+    font-weight: normal;
+  }
+  span {
+    padding-right: 10px;
   }
 `;
 
@@ -23,15 +33,18 @@ const CustomResume = ({
   return (
     <CustomStyle>
       <h1>{name}</h1>
-      <p>{phoneNumber}</p>
-      <p>{email}</p>
-      <p>{location}</p>
-      <p>{links}</p>
+      <span>{phoneNumber}</span>
+      <span>{email}</span>
+      <span>{location}</span>
+      <span>{links}</span>
       {sections.map((section, index) => (
         <div key={index}>
-          <h4>{section.sectionTitle}</h4>
-          <h5>{section.sectionSubtitle}</h5>
-          <p>{section.description}</p>
+          <h2>{section.sectionTitle}</h2>
+          <h3>{section.sectionSubtitle}</h3>
+          <h4>{section.description}</h4>
+          <p>{section.bulletPoint1}</p>
+          <p>{section.bulletPoint2}</p>
+          <p>{section.bulletPoint3}</p>
         </div>
       ))}
     </CustomStyle>

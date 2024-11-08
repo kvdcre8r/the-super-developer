@@ -3,7 +3,7 @@ import styled from "styled-components";
 const Container = styled.div`
   box-sizing: border-box;
   background-color: #30599b;
-  border: 3px solid #30599b;
+  border: 2px solid white;
   border-radius: 5px;
 
   @font-face {

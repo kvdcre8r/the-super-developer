@@ -1,11 +1,7 @@
 import React, { useState, useRef } from "react";
 import styled from "styled-components";
-import CustomResume from "./CustomResume";
-import Header from "./Header";
-import Container from "./Container.style";
-import { GlobalStyles } from "../GlobalStyles.style";
+import TargetComponent from "./Output";
 
-// Styled Components
 const MainStyle = styled.div`
   font-family: arial;
   margin: 10px;
@@ -20,13 +16,13 @@ const MainStyle = styled.div`
   }
 `;
 
-const SelectorStyle = styled.div`
+const FormStyle = styled.div`
   font-family: open-sans;
   color: lightcyan;
-  background-color: #30599b;
+  background-color: #244273;
   overflow-y: auto;
   scrollbar-width: thin;
-  scrollbar-color: #30599b #f1f1f1;
+  scrollbar-color: #244273 #f1f1f1;
   width: 260px;
   height: 100vh;
   padding: 0px 0px 10px 10px;
@@ -55,13 +51,6 @@ const SelectorStyle = styled.div`
       background-color: white;
     }
   }
-`;
-
-const TargetComponentWrapper = styled.div`
-  width: 100%;
-  padding: 10px;
-  border-left: 5px solid #30599b;
-  background-color: ${(props) => props.bgcolor || "transparent"};
 `;
 
 const Option = styled.option``;
@@ -211,15 +200,7 @@ const fontFamilies = [
   },
 ];
 
-const TargetComponent = React.forwardRef((props, ref) => {
-  return (
-    <TargetComponentWrapper ref={ref} bgcolor={props.bgcolor}>
-      <CustomResume {...props} />
-    </TargetComponentWrapper>
-  );
-});
-
-const Selectors = () => {
+const MainContent = () => {
   const [fontSize, setFontSize] = useState("");
   const [bgColor, setBgColor] = useState("");
   const [fontColor, setFontColor] = useState("");
@@ -292,7 +273,7 @@ const Selectors = () => {
   return (
     <div>
       <MainStyle>
-        <SelectorStyle>
+        <FormStyle>
           <div>
             <h3>Your Information:</h3>
             <form>
@@ -302,6 +283,7 @@ const Selectors = () => {
                 <input
                   type="text"
                   name="name"
+                  placeholder="Your Name"
                   value={resumeData.name}
                   onChange={handleInputChange}
                 />
@@ -469,7 +451,7 @@ const Selectors = () => {
               </button>
             </form>
           </div>
-        </SelectorStyle>
+        </FormStyle>
         <TargetComponent
           ref={targetRef}
           {...resumeData}
@@ -481,14 +463,4 @@ const Selectors = () => {
   );
 };
 
-function Custom() {
-  return (
-    <Container>
-      <GlobalStyles />
-      <Header />
-      <Selectors />
-    </Container>
-  );
-}
-
-export default Custom;
+export default MainContent;

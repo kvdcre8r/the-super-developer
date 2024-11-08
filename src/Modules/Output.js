@@ -11,7 +11,9 @@ const CustomStyle = styled.div`
     margin: 20px 0px 10px 0px;
     text-decoration: underline;
   }
-  h3, h4, p {
+  h3,
+  h4,
+  p {
     margin: 5px;
   }
   h4 {
@@ -51,4 +53,19 @@ const CustomResume = ({
   );
 };
 
-export default CustomResume;
+const TargetComponentWrapper = styled.div`
+  width: 100%;
+  padding: 10px;
+  border-left: 5px solid #30599b;
+  background-color: ${(props) => props.bgcolor || "transparent"};
+`;
+
+const TargetComponent = React.forwardRef((props, ref) => {
+  return (
+    <TargetComponentWrapper ref={ref} bgcolor={props.bgcolor}>
+      <CustomResume {...props} />
+    </TargetComponentWrapper>
+  );
+});
+
+export default TargetComponent;

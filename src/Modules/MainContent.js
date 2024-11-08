@@ -8,9 +8,11 @@ const MainStyle = styled.div`
   background-color: lightyellow;
   color: black;
   display: flex;
+
   h1 {
     font-size: 3.5em;
   }
+
   @media screen and (max-width: 600px) {
     flex-direction: column;
   }
@@ -18,6 +20,7 @@ const MainStyle = styled.div`
 
 const FormStyle = styled.div`
   font-family: open-sans;
+  text-shadow: 2px 2px 4px #000000;
   color: lightcyan;
   background-color: #244273;
   overflow-y: auto;
@@ -27,17 +30,21 @@ const FormStyle = styled.div`
   height: 100vh;
   padding: 0px 0px 10px 10px;
   border: 2px solid white;
+
   p {
     margin: 0px;
   }
+
   h3 {
     border-bottom: 2px solid lightcyan;
-    margin-bottom: 0px;
+    margin-bottom: 5px;
     margin-right: 10px;
   }
-.section-title {
-  padding-top: 20px;
-}
+
+  .resume-section {
+    padding-bottom: 20px;
+  }
+
   select {
     color: rgb(62, 92, 126);
     background-color: #f0f0f0;
@@ -49,6 +56,18 @@ const FormStyle = styled.div`
       outline: none;
       border-color: #30599b;
       background-color: white;
+    }
+  }
+
+  button {
+    background-color: #30599b;
+    color: white;
+    border: 1px solid white;
+    padding: 5px;
+    margin-top: 10px;
+    cursor: pointer;
+    &:hover {
+      background-color: #1c3359;
     }
   }
 `;
@@ -206,12 +225,21 @@ const MainContent = () => {
   const [fontColor, setFontColor] = useState("");
   const [fontFamily, setFontFamily] = useState("");
   const [resumeData, setResumeData] = useState({
-    name: "",
-    phoneNumber: "",
-    email: "",
-    location: "",
-    links: "",
-    sections: [{ sectionTitle: "", sectionSubtitle: "", description: "", bulletPoint1: "", bulletPoint2: "", bulletPoint3: "" }],
+    name: "John Smith",
+    phoneNumber: "123-456-7890",
+    email: "john.smith@example.com",
+    location: "New York, NY",
+    links: "https://linkedin.com/in/johnsmith",
+    sections: [
+      {
+        sectionTitle: "Professional Experience",
+        sectionSubtitle: "Software Developer",
+        description: "Developed and maintained web applications.",
+        bulletPoint1: "- Developed new features.",
+        bulletPoint2: "- Fixed bugs.",
+        bulletPoint3: "- Wrote tests.",
+      },
+    ],
   });
   const targetRef = useRef(null);
 
@@ -265,9 +293,36 @@ const MainContent = () => {
       ...prevData,
       sections: [
         ...prevData.sections,
-        { sectionTitle: "", sectionSubtitle: "", description: "", bulletPoint1: "", bulletPoint2: "", bulletPoint3: "" },
+        {
+          sectionTitle: "",
+          sectionSubtitle: "",
+          description: "",
+          bulletPoint1: "",
+          bulletPoint2: "",
+          bulletPoint3: "",
+        },
       ],
     }));
+  };
+
+  const clearFields = () => {
+    setResumeData({
+      name: "",
+      phoneNumber: "",
+      email: "",
+      location: "",
+      links: "",
+      sections: [
+        {
+          sectionTitle: "",
+          sectionSubtitle: "",
+          description: "",
+          bulletPoint1: "",
+          bulletPoint2: "",
+          bulletPoint3: "",
+        },
+      ],
+    });
   };
 
   return (
@@ -275,6 +330,9 @@ const MainContent = () => {
       <MainStyle>
         <FormStyle>
           <div>
+            <button type="button" onClick={clearFields}>
+              Clear All Fields
+            </button>
             <h3>Your Information:</h3>
             <form>
               <label>
@@ -283,7 +341,7 @@ const MainContent = () => {
                 <input
                   type="text"
                   name="name"
-                  placeholder="Your Name"
+                  placeholder="Your first and last name"
                   value={resumeData.name}
                   onChange={handleInputChange}
                 />
@@ -295,6 +353,7 @@ const MainContent = () => {
                 <input
                   type="tel"
                   name="phoneNumber"
+                  placeholder="Your phone number"
                   value={resumeData.phoneNumber}
                   onChange={handleInputChange}
                 />
@@ -306,6 +365,7 @@ const MainContent = () => {
                 <input
                   type="email"
                   name="email"
+                  placeholder="Your professional email"
                   value={resumeData.email}
                   onChange={handleInputChange}
                 />
@@ -317,6 +377,7 @@ const MainContent = () => {
                 <input
                   type="text"
                   name="location"
+                  placeholder="Your city or metro area"
                   value={resumeData.location}
                   onChange={handleInputChange}
                 />
@@ -328,6 +389,7 @@ const MainContent = () => {
                 <input
                   type="text"
                   name="links"
+                  placeholder="i.e. LinkedIn, GitHub, etc."
                   value={resumeData.links}
                   onChange={handleInputChange}
                 />
@@ -380,12 +442,13 @@ const MainContent = () => {
             <form>
               <h3>Resume Sections:</h3>
               {resumeData.sections.map((section, index) => (
-                <div key={index}>
+                <div className="resume-section" key={index}>
                   <label>
-                    <p className="section-title">Section Title:</p>
+                    Section Title:
                     <input
                       type="text"
                       name="sectionTitle"
+                      placeholder="i.e. Education or Experience"
                       value={section.sectionTitle}
                       onChange={(event) => handleSectionChange(index, event)}
                     />
@@ -397,6 +460,7 @@ const MainContent = () => {
                     <input
                       type="text"
                       name="sectionSubtitle"
+                      placeholder="i.e. Job, school, or project"
                       value={section.sectionSubtitle}
                       onChange={(event) => handleSectionChange(index, event)}
                     />
@@ -407,6 +471,7 @@ const MainContent = () => {
                     <br />
                     <textarea
                       name="description"
+                      placeholder="brief summary of role or project"
                       value={section.description}
                       onChange={(event) => handleSectionChange(index, event)}
                     />

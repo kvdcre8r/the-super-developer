@@ -3,23 +3,28 @@ import styled from "styled-components";
 
 const CustomStyle = styled.div`
   padding: 10px;
-  h1,
-  span {
+
+  h1{
     margin: 0px;
   }
+
   h2 {
     margin: 20px 0px 10px 0px;
     text-decoration: underline;
   }
+
   h3,
   h4,
   p {
     margin: 5px;
   }
+
   h4 {
     font-weight: normal;
   }
+  
   span {
+    margin: 0px;
     padding-right: 10px;
   }
 `;

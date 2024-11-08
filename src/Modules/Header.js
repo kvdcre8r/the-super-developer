@@ -2,6 +2,7 @@ import styled from "styled-components";
 
 const HeaderStyle = styled.header`
   font-size: 1.5em;
+  text-shadow: 2px 2px 4px #000000;
   background-color: #244273;
   padding: 20px;
   text-align: center;

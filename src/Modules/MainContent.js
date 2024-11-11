@@ -1,13 +1,16 @@
 import React, { useState, useRef } from "react";
+import { jsPDF } from "jspdf";
+import "jspdf-autotable";
 import styled from "styled-components";
 import TargetComponent from "./Output";
+import html2canvas from "html2canvas";
 
 const MainStyle = styled.div`
   font-family: arial;
   margin: 10px;
-  background-color: lightyellow;
   color: black;
   display: flex;
+  flex-direction: row;
 
   h1 {
     font-size: 3.5em;
@@ -27,9 +30,11 @@ const FormStyle = styled.div`
   scrollbar-width: thin;
   scrollbar-color: #244273 #f1f1f1;
   width: 260px;
-  height: 100vh;
+  height: 90vh;
   padding: 0px 0px 10px 10px;
   border: 2px solid white;
+  font-size: 0.8em;
+  margin-right: 10px;
 
   p {
     margin: 0px;
@@ -45,13 +50,24 @@ const FormStyle = styled.div`
     padding-bottom: 20px;
   }
 
+  input {
+    font-size: 0.8em;
+  }
+
+  textarea {
+    font-size: 1em;
+    width: 82%;
+  }
+
   select {
     color: rgb(62, 92, 126);
     background-color: #f0f0f0;
     border: 1px solid #ccc;
     border-radius: 4px;
-    padding: 0px;
+    padding: 3px 5px 3px 0px;
     margin-bottom: 5px;
+    font-size: 0.8em;
+    width: 85%;
     &:focus {
       outline: none;
       border-color: #30599b;
@@ -65,6 +81,7 @@ const FormStyle = styled.div`
     border: 1px solid white;
     padding: 5px;
     margin-top: 10px;
+    margin-right: 5px;
     cursor: pointer;
     &:hover {
       background-color: #1c3359;
@@ -219,6 +236,37 @@ const fontFamilies = [
   },
 ];
 
+function saveAsPDF() {
+  const { jsPDF } = window.jspdf;
+  const doc = new jsPDF();
+  const content = document.getElementById("TargetComponent");
+
+  html2canvas(content).then((canvas) => {
+      const imgData = canvas.toDataURL("image/png");
+      const imgWidth = 210; // A4 width in mm
+      const pageHeight = 297; // A4 height in mm
+      const imgHeight = (canvas.height * imgWidth) / canvas.width;
+
+      let heightLeft = imgHeight;
+      let position = 0;
+
+      doc.addImage(imgData, "PNG", 0, position, imgWidth, imgHeight);
+      heightLeft -= pageHeight;
+
+      while (heightLeft >= 0) {
+          position = heightLeft - imgHeight;
+          doc.addPage();
+          doc.addImage(imgData, "PNG", 0, position, imgWidth, imgHeight);
+          heightLeft -= pageHeight;
+      }
+
+      doc.save("resume.pdf");
+  });
+}
+
+
+
+
 const MainContent = () => {
   const [fontSize, setFontSize] = useState("");
   const [bgColor, setBgColor] = useState("");
@@ -333,6 +381,9 @@ const MainContent = () => {
             <button type="button" onClick={clearFields}>
               Clear All Fields
             </button>
+            <button type="button" onClick={saveAsPDF}>
+              Save as PDF
+            </button>
             <h3>Your Information:</h3>
             <form>
               <label>
@@ -398,7 +449,8 @@ const MainContent = () => {
           </div>
           <div>
             <h3>Customization:</h3>
-            <p>Font:</p>
+            Font:
+            <br />
             <select value={fontFamily} onChange={handleFontFamilyChange}>
               <option value="">Select a font</option>
               {fontFamilies.map(
@@ -408,8 +460,10 @@ const MainContent = () => {
                   </FontFamilyOption>
                 )
               )}
-            </select>{" "}
-            <p>Font Size:</p>
+            </select>
+            <br />
+            Font Size:
+            <br />
             <select value={fontSize} onChange={handleFontSizeChange}>
               <option value="">Select a size</option>
               {fontSizes.map(({ value, label, component: FontSizeOption }) => (
@@ -418,7 +472,9 @@ const MainContent = () => {
                 </FontSizeOption>
               ))}
             </select>
-            <p>Text Color:</p>
+            <br />
+            Text Color:
+            <br />
             <select value={fontColor} onChange={handleFontColorChange}>
               <option value="">Select a color</option>
               {textColors.map(
@@ -429,7 +485,9 @@ const MainContent = () => {
                 )
               )}
             </select>
-            <p>Background Color:</p>
+            <br />
+            Background Color:
+            <br />
             <select value={bgColor} onChange={handleBgColorChange}>
               <option value="">Select a color</option>
               {textColors.map(({ value, label, component: BgColorOption }) => (
@@ -445,6 +503,7 @@ const MainContent = () => {
                 <div className="resume-section" key={index}>
                   <label>
                     Section Title:
+                    <br />
                     <input
                       type="text"
                       name="sectionTitle"
@@ -517,12 +576,14 @@ const MainContent = () => {
             </form>
           </div>
         </FormStyle>
-        <TargetComponent
-          ref={targetRef}
-          {...resumeData}
-          bgcolor={bgColor}
-          style={{ fontFamily }}
-        />
+        <div id="TargetComponent">
+          <TargetComponent
+            ref={targetRef}
+            {...resumeData}
+            bgcolor={bgColor}
+            style={{ fontFamily }}
+          />
+        </div>
       </MainStyle>
     </div>
   );

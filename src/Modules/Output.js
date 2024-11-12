@@ -1,7 +1,8 @@
 import React from "react";
 import styled from "styled-components";
 const CustomStyle = styled.div`
-  padding: 10px;
+  padding: 20px;
+  size: A4;
   width: 700px;
   height: 1000px;
   h1 {

@@ -2,101 +2,26 @@ import React, { useState, useRef } from "react";
 import { jsPDF } from "jspdf";
 import "jspdf-autotable";
 import styled from "styled-components";
+import { MainStyle } from "./MainContent.style";
+import { FormStyle } from "./MainContent.style";
 import TargetComponent from "./Output";
 import html2canvas from "html2canvas";
-
-const MainStyle = styled.div`
-  font-family: arial;
-  margin: 10px;
-  color: black;
-  display: flex;
-  flex-direction: row;
-
-  h1 {
-    font-size: 3.5em;
-  }
-
-  @media screen and (max-width: 600px) {
-    flex-direction: column;
-  }
-`;
-
-const FormStyle = styled.div`
-  font-family: open-sans;
-  text-shadow: 2px 2px 4px #000000;
-  color: lightcyan;
-  background-color: #244273;
-  overflow-y: auto;
-  scrollbar-width: thin;
-  scrollbar-color: #244273 #f1f1f1;
-  width: 260px;
-  height: 90vh;
-  padding: 0px 0px 10px 10px;
-  border: 2px solid white;
-  font-size: 0.8em;
-  margin-right: 10px;
-
-  p {
-    margin: 0px;
-  }
-
-  h3 {
-    border-bottom: 2px solid lightcyan;
-    margin-bottom: 5px;
-    margin-right: 10px;
-  }
-
-  .resume-section {
-    padding-bottom: 20px;
-  }
-
-  input {
-    font-size: 0.8em;
-  }
-
-  textarea {
-    font-size: 1em;
-    width: 82%;
-  }
-
-  select {
-    color: rgb(62, 92, 126);
-    background-color: #f0f0f0;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    padding: 3px 5px 3px 0px;
-    margin-bottom: 5px;
-    font-size: 0.8em;
-    width: 85%;
-    &:focus {
-      outline: none;
-      border-color: #30599b;
-      background-color: white;
-    }
-  }
-
-  button {
-    background-color: #30599b;
-    color: white;
-    border: 1px solid white;
-    padding: 5px;
-    margin-top: 10px;
-    margin-right: 5px;
-    cursor: pointer;
-    &:hover {
-      background-color: #1c3359;
-    }
-  }
-`;
 
 const Option = styled.option``;
 
 const fontSizes = [
   {
     value: "8px",
-    label: "Small",
+    label: "x-Small",
     component: styled(Option)`
       font-size: 8px;
+    `,
+  },
+  {
+    value: "10px",
+    label: "Small",
+    component: styled(Option)`
+      font-size: 10px;
     `,
   },
   {
@@ -107,8 +32,15 @@ const fontSizes = [
     `,
   },
   {
-    value: "16px",
+    value: "14px",
     label: "Large",
+    component: styled(Option)`
+      font-size: 14px;
+    `,
+  },
+  {
+    value: "16px",
+    label: "x-Large",
     component: styled(Option)`
       font-size: 16px;
     `,
@@ -264,9 +196,6 @@ function saveAsPDF() {
   });
 }
 
-
-
-
 const MainContent = () => {
   const [fontSize, setFontSize] = useState("");
   const [bgColor, setBgColor] = useState("");
@@ -379,7 +308,7 @@ const MainContent = () => {
         <FormStyle>
           <div>
             <button type="button" onClick={clearFields}>
-              Clear All Fields
+              Clear All
             </button>
             <button type="button" onClick={saveAsPDF}>
               Save as PDF

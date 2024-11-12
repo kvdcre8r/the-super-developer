@@ -9,7 +9,8 @@ const HeaderStyle = styled.header`
   color: white;
   margin: 10px;
   border: 2px solid white;
-  border-radius: 3px;
+  border-top-left-radius: 4px;
+  border-top-right-radius: 4px;
   h1 {
     font-family: courgette;
     margin: 0;
@@ -24,7 +25,7 @@ const HeaderStyle = styled.header`
 function Header() {
   return (
     <HeaderStyle>
-      <h1>Custom Resume Builder</h1>
+      <h1>Presto Resume Builder</h1>
       <p>a KVDeveloper creation</p>
     </HeaderStyle>
   );

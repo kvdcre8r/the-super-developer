@@ -50,13 +50,13 @@ const CustomResume = ({
   );
 };
 const TargetComponentWrapper = styled.div`
-  padding: 10px 10px 16px 10px;
-  background-color: ${(props) => props.bgcolor || "lightyellow"};
+  padding: 10px 10px 24px 10px;
+  background-color: ${(props) => props.color || "lightyellow"};
   box-sizing: border-box;
 `;
 const TargetComponent = React.forwardRef((props, ref) => {
   return (
-    <TargetComponentWrapper ref={ref} bgcolor={props.bgcolor}>
+    <TargetComponentWrapper ref={ref} color={props.bgcolor}>
       {" "}
       <CustomResume {...props} />{" "}
     </TargetComponentWrapper>

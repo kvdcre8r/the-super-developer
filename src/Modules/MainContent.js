@@ -1,5 +1,4 @@
 import React, { useState, useRef } from "react";
-import { jsPDF } from "jspdf";
 import "jspdf-autotable";
 import styled from "styled-components";
 import { MainStyle } from "./MainContent.style";

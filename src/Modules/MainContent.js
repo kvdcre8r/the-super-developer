@@ -173,25 +173,25 @@ function saveAsPDF() {
   const content = document.getElementById("TargetComponent");
 
   html2canvas(content).then((canvas) => {
-      const imgData = canvas.toDataURL("image/png");
-      const imgWidth = 210;
-      const pageHeight = 297;
-      const imgHeight = (canvas.height * imgWidth) / canvas.width;
+    const imgData = canvas.toDataURL("image/png");
+    const imgWidth = 210;
+    const pageHeight = 297;
+    const imgHeight = (canvas.height * imgWidth) / canvas.width;
 
-      let heightLeft = imgHeight;
-      let position = 0;
+    let heightLeft = imgHeight;
+    let position = 0;
 
+    doc.addImage(imgData, "PNG", 0, position, imgWidth, imgHeight);
+    heightLeft -= pageHeight;
+
+    while (heightLeft >= 0) {
+      position = heightLeft - imgHeight;
+      doc.addPage();
       doc.addImage(imgData, "PNG", 0, position, imgWidth, imgHeight);
       heightLeft -= pageHeight;
+    }
 
-      while (heightLeft >= 0) {
-          position = heightLeft - imgHeight;
-          doc.addPage();
-          doc.addImage(imgData, "PNG", 0, position, imgWidth, imgHeight);
-          heightLeft -= pageHeight;
-      }
-
-      doc.save("resume.pdf");
+    doc.save("resume.pdf");
   });
 }
 
@@ -208,12 +208,25 @@ const MainContent = () => {
     links: "https://linkedin.com/in/johnsmith",
     sections: [
       {
-        sectionTitle: "Professional Experience",
-        sectionSubtitle: "Software Developer",
-        description: "Developed and maintained web applications.",
-        bulletPoint1: "- Developed new features.",
-        bulletPoint2: "- Fixed bugs.",
-        bulletPoint3: "- Wrote tests.",
+        s1SectionTitle: "Professional Summary",
+        s1SectionSubtitle: "",
+        s1Description:
+          "Creative, analytical, and quality-driven tech-professional seeking entry-level remote or local work opportunities. Trained in full stack web development with a keen eye for detail and design. Excited to create, develop, and maintain innovative web applications that go above and beyond the client's needs.",
+        s1BulletPoint1: "",
+        s1BulletPoint2: "",
+        s1BulletPoint3: "",
+        s2SectionTitle: "Technical Experience",
+        s2SectionSubtitle: "Lead Software Developer - Big Tech Co.",
+        s2Description: "Developed and maintained web applications",
+        s2BulletPoint1: "- Developed new features",
+        s2BulletPoint2: "- Fixed bugs",
+        s2BulletPoint3: "- Wrote tests",
+        s3SectionTitle: "",
+        s3SectionSubtitle: "Jr. Software Developer - Small Tech Co.",
+        s3Description: "Developed and maintained web applications",
+        s3BulletPoint1: "- Developed new features",
+        s3BulletPoint2: "- Fixed bugs",
+        s3BulletPoint3: "- Wrote tests",
       },
     ],
   });
@@ -267,17 +280,7 @@ const MainContent = () => {
   const addSection = () => {
     setResumeData((prevData) => ({
       ...prevData,
-      sections: [
-        ...prevData.sections,
-        {
-          sectionTitle: "",
-          sectionSubtitle: "",
-          description: "",
-          bulletPoint1: "",
-          bulletPoint2: "",
-          bulletPoint3: "",
-        },
-      ],
+      sections: [...prevData.sections, {}],
     }));
   };
 
@@ -290,12 +293,24 @@ const MainContent = () => {
       links: "",
       sections: [
         {
-          sectionTitle: "",
-          sectionSubtitle: "",
-          description: "",
-          bulletPoint1: "",
-          bulletPoint2: "",
-          bulletPoint3: "",
+          s1SectionTitle: "",
+          s1SectionSubtitle: "",
+          s1Description: "",
+          s1BulletPoint1: "",
+          s1BulletPoint2: "",
+          s1BulletPoint3: "",
+          s2SectionTitle: "",
+          s2SectionSubtitle: "",
+          s2Description: "",
+          s2BulletPoint1: "",
+          s2BulletPoint2: "",
+          s2BulletPoint3: "",
+          s3SectionTitle: "",
+          s3SectionSubtitle: "",
+          s3Description: "",
+          s3BulletPoint1: "",
+          s3BulletPoint2: "",
+          s3BulletPoint3: "",
         },
       ],
     });
@@ -305,13 +320,15 @@ const MainContent = () => {
     <div>
       <MainStyle>
         <FormStyle>
-          <div>
+          <div className="top-buttons">
             <button type="button" onClick={clearFields}>
               Clear All
             </button>
             <button type="button" onClick={saveAsPDF}>
               Save as PDF
             </button>
+          </div>
+          <div>
             <h3>Your Information:</h3>
             <form>
               <label>
@@ -428,78 +445,219 @@ const MainContent = () => {
             <form>
               <h3>Resume Sections:</h3>
               {resumeData.sections.map((section, index) => (
-                <div className="resume-section" key={index}>
-                  <label>
-                    Section Title:
+                <div>
+                  <div className="resume-section" key={index}>
+                    <label>
+                      Section Title:
+                      <br />
+                      <input
+                        type="text"
+                        name="s1SectionTitle"
+                        placeholder="ex: Professional Summary"
+                        value={section.s1SectionTitle}
+                        onChange={(event) => handleSectionChange(index, event)}
+                      />
+                    </label>
                     <br />
-                    <input
-                      type="text"
-                      name="sectionTitle"
-                      placeholder="i.e. Education or Experience"
-                      value={section.sectionTitle}
-                      onChange={(event) => handleSectionChange(index, event)}
-                    />
-                  </label>
-                  <br />
-                  <label>
-                    Section Subtitle:
+                    <label>
+                      Subtitle:
+                      <br />
+                      <input
+                        type="text"
+                        name="s1SectionSubtitle"
+                        placeholder="leave blank if not applicable"
+                        value={section.s1SectionSubtitle}
+                        onChange={(event) => handleSectionChange(index, event)}
+                      />
+                    </label>
                     <br />
-                    <input
-                      type="text"
-                      name="sectionSubtitle"
-                      placeholder="i.e. Job, school, or project"
-                      value={section.sectionSubtitle}
-                      onChange={(event) => handleSectionChange(index, event)}
-                    />
-                  </label>
-                  <br />
-                  <label>
-                    Description:
+                    <label>
+                      Description:
+                      <br />
+                      <textarea
+                        name="s1Description"
+                        placeholder="brief summary of your skills and experience"
+                        value={section.s1Description}
+                        onChange={(event) => handleSectionChange(index, event)}
+                      />
+                    </label>
                     <br />
-                    <textarea
-                      name="description"
-                      placeholder="brief summary of role or project"
-                      value={section.description}
-                      onChange={(event) => handleSectionChange(index, event)}
-                    />
-                  </label>
-                  <br />
-                  <label>
-                    Bullet Point 1:
+                    <label>
+                      Bullet Point 1:
+                      <br />
+                      <input
+                        type="text"
+                        name="s1BulletPoint1"
+                        placeholder="bullet point"
+                        value={section.s1BulletPoint1}
+                        onChange={(event) => handleSectionChange(index, event)}
+                      />
+                    </label>
                     <br />
-                    <input
-                      type="text"
-                      name="bulletPoint1"
-                      value={section.bulletPoint1}
-                      onChange={(event) => handleSectionChange(index, event)}
-                    />
-                  </label>
-                  <br />
-                  <label>
-                    Bullet Point 2:
+                    <label>
+                      Bullet Point 2:
+                      <br />
+                      <input
+                        type="text"
+                        name="s1BulletPoint2"
+                        value={section.s1BulletPoint2}
+                        onChange={(event) => handleSectionChange(index, event)}
+                      />
+                    </label>
                     <br />
-                    <input
-                      type="text"
-                      name="bulletPoint2"
-                      value={section.bulletPoint2}
-                      onChange={(event) => handleSectionChange(index, event)}
-                    />
-                  </label>
-                  <br />
-                  <label>
-                    Bullet Point 3:
+                    <label>
+                      Bullet Point 3:
+                      <br />
+                      <input
+                        type="text"
+                        name="s1BulletPoint3"
+                        value={section.s1BulletPoint3}
+                        onChange={(event) => handleSectionChange(index, event)}
+                      />
+                    </label>
+                  </div>
+                  <div className="resume-section" key={index}>
+                    <label>
+                      Section Title:
+                      <br />
+                      <input
+                        type="text"
+                        name="s2SectionTitle"
+                        placeholder="i.e. Skills, Education, Experience"
+                        value={section.s2SectionTitle}
+                        onChange={(event) => handleSectionChange(index, event)}
+                      />
+                    </label>
                     <br />
-                    <input
-                      type="text"
-                      name="bulletPoint3"
-                      value={section.bulletPoint3}
-                      onChange={(event) => handleSectionChange(index, event)}
-                    />
-                  </label>
+                    <label>
+                      Section Subtitle:
+                      <br />
+                      <input
+                        type="text"
+                        name="s2SectionSubtitle"
+                        placeholder="i.e. Job, school, or project"
+                        value={section.s2SectionSubtitle}
+                        onChange={(event) => handleSectionChange(index, event)}
+                      />
+                    </label>
+                    <br />
+                    <label>
+                      Description:
+                      <br />
+                      <textarea
+                        name="s2Description"
+                        placeholder="brief summary of role or project"
+                        value={section.s2Description}
+                        onChange={(event) => handleSectionChange(index, event)}
+                      />
+                    </label>
+                    <br />
+                    <label>
+                      Bullet Point 1:
+                      <br />
+                      <input
+                        type="text"
+                        name="s2BulletPoint1"
+                        value={section.s2BulletPoint1}
+                        onChange={(event) => handleSectionChange(index, event)}
+                      />
+                    </label>
+                    <br />
+                    <label>
+                      Bullet Point 2:
+                      <br />
+                      <input
+                        type="text"
+                        name="s2BulletPoint2"
+                        value={section.s2BulletPoint2}
+                        onChange={(event) => handleSectionChange(index, event)}
+                      />
+                    </label>
+                    <br />
+                    <label>
+                      Bullet Point 3:
+                      <br />
+                      <input
+                        type="text"
+                        name="s2BulletPoint3"
+                        value={section.s2BulletPoint3}
+                        onChange={(event) => handleSectionChange(index, event)}
+                      />
+                    </label>
+                  </div>
+                  <div className="resume-section" key={index}>
+                    <label>
+                      Section Title:
+                      <br />
+                      <input
+                        type="text"
+                        name="s3SectionTitle"
+                        placeholder="i.e. Education or Experience"
+                        value={section.s3SectionTitle}
+                        onChange={(event) => handleSectionChange(index, event)}
+                      />
+                    </label>
+                    <br />
+                    <label>
+                      Section Subtitle:
+                      <br />
+                      <input
+                        type="text"
+                        name="s3SectionSubtitle"
+                        placeholder="i.e. Job, school, or project"
+                        value={section.s3SectionSubtitle}
+                        onChange={(event) => handleSectionChange(index, event)}
+                      />
+                    </label>
+                    <br />
+                    <label>
+                      Description:
+                      <br />
+                      <textarea
+                        name="s3Description"
+                        placeholder="brief summary of role or project"
+                        value={section.s3Description}
+                        onChange={(event) => handleSectionChange(index, event)}
+                      />
+                    </label>
+                    <br />
+                    <label>
+                      Bullet Point 1:
+                      <br />
+                      <input
+                        type="text"
+                        name="s3BulletPoint1"
+                        value={section.s3BulletPoint1}
+                        onChange={(event) => handleSectionChange(index, event)}
+                      />
+                    </label>
+                    <br />
+                    <label>
+                      Bullet Point 2:
+                      <br />
+                      <input
+                        type="text"
+                        name="s3BulletPoint2"
+                        value={section.s3BulletPoint2}
+                        onChange={(event) => handleSectionChange(index, event)}
+                      />
+                    </label>
+                    <br />
+                    <label>
+                      Bullet Point 3:
+                      <br />
+                      <input
+                        type="text"
+                        name="s3BulletPoint3"
+                        value={section.s3BulletPoint3}
+                        onChange={(event) => handleSectionChange(index, event)}
+                      />
+                    </label>
+                  </div>
                 </div>
               ))}
               <button type="button" onClick={addSection}>
-                Add Section
+                Add Sections
               </button>
             </form>
           </div>

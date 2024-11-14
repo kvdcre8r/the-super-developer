@@ -17,6 +17,11 @@ export const MainStyle = styled.div`
 `;
 
 export const FormStyle = styled.div`
+  top: 0;
+  left: 0;
+  right: 0;
+  overflow: hidden;
+  position: sticky;
   font-family: open-sans;
   text-shadow: 2px 2px 4px #000000;
   color: lightcyan;
@@ -25,7 +30,7 @@ export const FormStyle = styled.div`
   scrollbar-width: thin;
   scrollbar-color: #244273 #f1f1f1;
   width: 250px;
-  height: 90vh;
+  height: 95vh;
   padding: 0px 0px 10px 10px;
   border: 2px solid white;
   font-size: 0.8em;
@@ -68,6 +73,16 @@ export const FormStyle = styled.div`
       border-color: #30599b;
       background-color: white;
     }
+  }
+
+  .top-buttons {
+    top: 0;
+    left: 0;
+    right: 0;
+    overflow: hidden;
+    position: sticky;
+    background-color: #244273;
+    padding-bottom: 10px;
   }
 
   button {

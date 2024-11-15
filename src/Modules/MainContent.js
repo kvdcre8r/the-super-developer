@@ -48,6 +48,22 @@ const fontSizes = [
 
 const textColors = [
   {
+    value: "white",
+    label: "White",
+    component: styled(Option)`
+      color: black;
+      background-color: white;
+    `,
+  },
+  {
+    value: "lightyellow",
+    label: "Light Yellow",
+    component: styled(Option)`
+      color: black;
+      background-color: lightyellow;
+    `,
+  },
+  {
     value: "pink",
     label: "Pink",
     component: styled(Option)`
@@ -65,10 +81,26 @@ const textColors = [
   },
   {
     value: "cyan",
-    label: "Cyan",
+    label: "Light Blue",
     component: styled(Option)`
       color: black;
       background-color: cyan;
+    `,
+  },
+  {
+    value: "greenyellow",
+    label: "Neon Green",
+    component: styled(Option)`
+      color: black;
+      background-color: greenyellow;
+    `,
+  },
+  {
+    value: "blue",
+    label: "Blue",
+    component: styled(Option)`
+      color: white;
+      background-color: blue;
     `,
   },
   {
@@ -93,22 +125,6 @@ const textColors = [
     component: styled(Option)`
       color: white;
       background-color: darkgreen;
-    `,
-  },
-  {
-    value: "white",
-    label: "White",
-    component: styled(Option)`
-      color: black;
-      background-color: white;
-    `,
-  },
-  {
-    value: "greenyellow",
-    label: "Greenyellow",
-    component: styled(Option)`
-      color: black;
-      background-color: greenyellow;
     `,
   },
   {

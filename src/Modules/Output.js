@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+
 const CustomStyle = styled.div`
   padding: 20px;
   size: A4;
@@ -29,6 +30,14 @@ const CustomStyle = styled.div`
     padding-right: 10px;
   }
 `;
+
+const TargetComponentWrapper = styled.div`
+  padding: 10px 10px 24px 10px;
+  background-color: ${(props) => props.color || "lightyellow"};
+  color: ${(props) => props.color || "green"};
+  box-sizing: border-box;
+`;
+
 const CustomResume = ({
   name,
   phoneNumber,
@@ -57,11 +66,7 @@ const CustomResume = ({
     </CustomStyle>
   );
 };
-const TargetComponentWrapper = styled.div`
-  padding: 10px 10px 24px 10px;
-  background-color: ${(props) => props.color || "lightyellow"};
-  box-sizing: border-box;
-`;
+
 const TargetComponent = React.forwardRef((props, ref) => {
   return (
     <TargetComponentWrapper ref={ref} color={props.bgcolor}>

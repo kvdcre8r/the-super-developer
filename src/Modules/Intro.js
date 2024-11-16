@@ -1,9 +1,13 @@
 import styled from "styled-components";
 
 const IntroStyle = styled.div`
-  color: greenyellow;
+  color: white;
   font-family: open-sans;
+  text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
   padding: 0px 20px;
+  p {
+    background-color: rgba(0, 24, 105, 0.485);
+  }
 `;
 
 function Intro() {

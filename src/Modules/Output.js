@@ -34,7 +34,7 @@ const CustomStyle = styled.div`
 const TargetComponentWrapper = styled.div`
   padding: 10px 10px 24px 10px;
   background-color: ${(props) => props.color || "lightyellow"};
-  color: ${(props) => props.color || "green"};
+  color: ${(props) => props.color || "navy"};
   box-sizing: border-box;
 `;
 

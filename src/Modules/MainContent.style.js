@@ -102,6 +102,9 @@ export const FormStyle = styled.div`
 const Container = styled.div`
   box-sizing: border-box;
   background-color: #30599b;
+  background-image: url('../../assets/blue-office-background.jpg');
+  background-position: center;
+  background-size: contain;
   border: 2px solid white;
   border-radius: 5px;
 

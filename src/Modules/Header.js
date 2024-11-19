@@ -25,7 +25,7 @@ const HeaderStyle = styled.header`
 function Header() {
   return (
     <HeaderStyle>
-      <h1>Presto Resume Builder</h1>
+      <h1>Inspire Resume Builder</h1>
       <p>a KVDeveloper creation</p>
     </HeaderStyle>
   );

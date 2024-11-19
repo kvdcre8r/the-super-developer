@@ -6,7 +6,9 @@ const CustomStyle = styled.div`
   size: A4;
   width: 700px;
   height: 1000px;
+
   h1 {
+    font-size: 3.5em;
     margin: 0px;
   }
   h2 {
@@ -34,12 +36,12 @@ const CustomStyle = styled.div`
 `;
 
 const TargetComponentWrapper = styled.div`
+  box-sizing: border-box;
   padding: 10px 10px 24px 10px;
   background-color: ${(props) => props.color || "lightyellow"};
   color: ${(props) => props.color || "#244273"};
   font-family: ${(props) => props.font || "open-sans"};
   font-size: ${(props) => props.size || "12px"};
-  box-sizing: border-box;
 `;
 
 const CustomResume = ({
@@ -74,9 +76,9 @@ const CustomResume = ({
 const TargetComponent = React.forwardRef((props, ref) => {
   return (
     <TargetComponentWrapper ref={ref} color={props.bgcolor}>
-      {" "}
-      <CustomResume {...props} />{" "}
+      <CustomResume {...props} />
     </TargetComponentWrapper>
   );
 });
+
 export default TargetComponent;

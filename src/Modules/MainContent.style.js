@@ -1,15 +1,9 @@
 import styled from "styled-components";
 
 export const MainStyle = styled.div`
-  font-family: arial;
   margin: 10px;
-  color: black;
   display: flex;
   flex-direction: row;
-
-  h1 {
-    font-size: 3.5em;
-  }
 
   @media screen and (max-width: 600px) {
     flex-direction: column;
@@ -39,22 +33,18 @@ export const FormStyle = styled.div`
   p {
     margin: 0px;
   }
-
   h3 {
     border-bottom: 2px solid lightcyan;
     margin-bottom: 5px;
     margin-right: 10px;
   }
-
   .resume-section {
     padding-bottom: 20px;
   }
-
   input {
     font-size: 0.8em;
     width: 90%;
   }
-
   textarea {
     font-size: 1em;
     width: 91%;
@@ -75,16 +65,6 @@ export const FormStyle = styled.div`
     }
   }
 
-  .top-buttons {
-    top: 0;
-    left: 0;
-    right: 0;
-    overflow: hidden;
-    position: sticky;
-    background-color: #244273;
-    padding-bottom: 10px;
-  }
-
   button {
     background-color: #30599b;
     color: white;
@@ -97,12 +77,22 @@ export const FormStyle = styled.div`
       background-color: #1c3359;
     }
   }
+
+  .top-buttons {
+    top: 0;
+    left: 0;
+    right: 0;
+    overflow: hidden;
+    position: sticky;
+    background-color: #244273;
+    padding-bottom: 10px;
+  }
 `;
 
 const Container = styled.div`
   box-sizing: border-box;
   background-color: #30599b;
-  background-image: url('../../assets/blue-office-background.jpg');
+  background-image: url("../../assets/blue-office-background.jpg");
   background-position: center;
   background-size: contain;
   border: 2px solid white;

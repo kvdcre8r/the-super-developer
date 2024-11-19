@@ -4,9 +4,15 @@ const IntroStyle = styled.div`
   color: white;
   font-family: open-sans;
   text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
-  padding: 0px 20px;
+  padding: 0px 10px;
+  summary {
+    background-color: #24427381;
+    width: 12%;
+    padding-left: 10px;
+  }
   p {
-    background-color: rgba(0, 24, 105, 0.485);
+    background-color: #24427381;
+    padding: 10px;
   }
 `;
 

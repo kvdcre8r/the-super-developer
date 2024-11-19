@@ -23,18 +23,22 @@ const CustomStyle = styled.div`
     list-style: none;
   }
   h4 {
+    margin-left: 10px;
     font-weight: normal;
   }
   span {
     margin: 0px;
     padding-right: 10px;
+    font-weight: bold;
   }
 `;
 
 const TargetComponentWrapper = styled.div`
   padding: 10px 10px 24px 10px;
   background-color: ${(props) => props.color || "lightyellow"};
-  color: ${(props) => props.color || "navy"};
+  color: ${(props) => props.color || "#244273"};
+  font-family: ${(props) => props.font || "open-sans"};
+  font-size: ${(props) => props.size || "12px"};
   box-sizing: border-box;
 `;
 

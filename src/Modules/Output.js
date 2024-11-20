@@ -38,8 +38,8 @@ const CustomStyle = styled.div`
 const TargetComponentWrapper = styled.div`
   box-sizing: border-box;
   padding: 10px 10px 24px 10px;
-  background-color: ${(props) => props.color || "lightyellow"};
-  color: ${(props) => props.color || "#244273"};
+  background-color: ${(props) => props.color || "#F1E9D2"};
+  color: ${(props) => props.color || "#315BA1"};
   font-family: ${(props) => props.font || "open-sans"};
   font-size: ${(props) => props.size || "12px"};
 `;

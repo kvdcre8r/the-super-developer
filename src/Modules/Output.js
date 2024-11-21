@@ -7,7 +7,7 @@ const CustomStyle = styled.div`
   padding: 20px;
 
   h1 {
-    font-size: 3.5em;
+    font-size: 4em;
     margin: 0px;
   }
   h2 {

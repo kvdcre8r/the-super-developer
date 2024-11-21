@@ -39,32 +39,32 @@ const MainContent = () => {
   const [fontColor, setFontColor] = useState("");
   const [fontFamily, setFontFamily] = useState("");
   const [resumeData, setResumeData] = useState({
-    name: "John Smith",
+    name: "Your Name",
     phoneNumber: "123-456-7890",
-    email: "john.smith@example.com",
-    location: "New York, NY",
-    links: "https://linkedin.com/in/johnsmith",
+    email: "your.email@example.com",
+    location: "Your City, State",
+    links: "https://linkedin.com/in/yourname",
     sections: [
       {
         s1SectionTitle: "Professional Summary",
         s1SectionSubtitle: "",
         s1Description:
-          "Creative, analytical, and quality-driven tech-professional seeking entry-level remote or local work opportunities. Trained in full stack web development with a keen eye for detail and design. Excited to create, develop, and maintain innovative web applications that go above and beyond the client's needs.",
+          "This is a brief summary of your skills, experience, and job search goals. Two to three sentences listing your most relevant skills, including those listed in the job description. Use strong keywords describing your motivation in applying for your desired role.",
         s1BulletPoint1: "",
         s1BulletPoint2: "",
         s1BulletPoint3: "",
-        s2SectionTitle: "Technical Experience",
-        s2SectionSubtitle: "Lead Software Developer - Big Tech Co.",
-        s2Description: "Developed and maintained web applications",
-        s2BulletPoint1: "- Developed new features",
-        s2BulletPoint2: "- Fixed bugs",
-        s2BulletPoint3: "- Wrote tests",
-        s3SectionTitle: "",
-        s3SectionSubtitle: "Jr. Software Developer - Small Tech Co.",
-        s3Description: "Developed and maintained web applications",
-        s3BulletPoint1: "- Developed new features",
-        s3BulletPoint2: "- Fixed bugs",
-        s3BulletPoint3: "- Wrote tests",
+        s2SectionTitle: "Technical Projects",
+        s2SectionSubtitle: "Project Name - Your Role",
+        s2Description: "Describe your role and responsibilities",
+        s2BulletPoint1: "- List your contributions",
+        s2BulletPoint2: "- Use if applicable",
+        s2BulletPoint3: "- Add more projects by leaving the section title blank",
+        s3SectionTitle: "Technical Experience",
+        s3SectionSubtitle: "Your Position - Company Name",
+        s3Description: "Describe your accomplishments, responsibilities, and skills",
+        s3BulletPoint1: "- List your achievements",
+        s3BulletPoint2: "- Use dashes for each point to improve readability",
+        s3BulletPoint3: "- Add more experience by leaving the section title blank",
       },
     ],
   });
@@ -82,18 +82,19 @@ const MainContent = () => {
     const color = event.target.value;
     setBgColor(color);
     if (targetRef.current) {
-        targetRef.current.style.background = color.includes("linear-gradient") ? color : `background-color: ${color}`;
+      targetRef.current.style.background = color.includes("linear-gradient")
+        ? color
+        : `background-color: ${color}`;
     }
-};
+  };
 
-const handleFontColorChange = (event) => {
+  const handleFontColorChange = (event) => {
     const color = event.target.value;
     setFontColor(color);
     if (targetRef.current) {
-        targetRef.current.style.color = color;
+      targetRef.current.style.color = color;
     }
-};
-
+  };
 
   const handleFontFamilyChange = (event) => {
     const font = event.target.value;

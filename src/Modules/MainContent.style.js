@@ -4,16 +4,10 @@ export const MainStyle = styled.div`
   margin: 10px;
   display: flex;
   flex-direction: row;
-
-  @media screen and (max-width: 600px) {
-    flex-direction: column;
-  }
 `;
 
 export const FormStyle = styled.div`
   top: 0;
-  left: 0;
-  right: 0;
   overflow: hidden;
   position: sticky;
   font-family: open-sans;
@@ -23,12 +17,12 @@ export const FormStyle = styled.div`
   overflow-y: auto;
   scrollbar-width: thin;
   scrollbar-color: #244273 #f1f1f1;
-  width: 250px;
+  min-width: 150px;
   height: 95vh;
   padding: 0px 0px 10px 10px;
   border: 2px solid white;
   font-size: 0.8em;
-  margin-right: 10px;
+  margin-right: 20px;
 
   p {
     margin: 0px;
@@ -93,7 +87,7 @@ const Container = styled.div`
   box-sizing: border-box;
   background-color: #30599b;
   background-image: url("../../assets/blue-office-background.jpg");
-  background-position: center;
+  background-position-x: center;
   background-size: contain;
   border: 2px solid white;
   border-radius: 5px;

@@ -7,7 +7,7 @@ const IntroStyle = styled.div`
   padding: 0px 10px;
   summary {
     background-color: #244273c1;
-    width: 12%;
+    width: 110px;
     padding-left: 10px;
   }
   p {

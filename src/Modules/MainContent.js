@@ -2,7 +2,7 @@ import React, { useState, useRef } from "react";
 import "jspdf-autotable";
 import html2canvas from "html2canvas";
 import { MainStyle, FormStyle } from "./MainContent.style";
-import { fontSizes, textColors, fontFamilies } from "./Selectors";
+import { fontSizes, textColors, bgColors, fontFamilies } from "./Selectors";
 import TargetComponent from "./Output";
 
 function saveAsPDF() {
@@ -10,10 +10,10 @@ function saveAsPDF() {
   const doc = new jsPDF();
   const content = document.getElementById("TargetComponent");
 
-  html2canvas(content).then((canvas) => {
+  html2canvas(content, { scale: 3 }).then((canvas) => {
     const imgData = canvas.toDataURL("image/png");
-    const imgWidth = 210;
-    const pageHeight = 297;
+    const imgWidth = 210; // A4 width in mm
+    const pageHeight = 297; // A4 height in mm
     const imgHeight = (canvas.height * imgWidth) / canvas.width;
 
     let heightLeft = imgHeight;
@@ -81,15 +81,19 @@ const MainContent = () => {
   const handleBgColorChange = (event) => {
     const color = event.target.value;
     setBgColor(color);
-  };
+    if (targetRef.current) {
+        targetRef.current.style.background = color.includes("linear-gradient") ? color : `background-color: ${color}`;
+    }
+};
 
-  const handleFontColorChange = (event) => {
+const handleFontColorChange = (event) => {
     const color = event.target.value;
     setFontColor(color);
     if (targetRef.current) {
-      targetRef.current.style.color = color;
+        targetRef.current.style.color = color;
     }
-  };
+};
+
 
   const handleFontFamilyChange = (event) => {
     const font = event.target.value;
@@ -273,7 +277,7 @@ const MainContent = () => {
             <br />
             <select value={bgColor} onChange={handleBgColorChange}>
               <option value="">Select a color</option>
-              {textColors.map(({ value, label, component: BgColorOption }) => (
+              {bgColors.map(({ value, label, component: BgColorOption }) => (
                 <BgColorOption key={value} value={value}>
                   {label}
                 </BgColorOption>

@@ -2,10 +2,9 @@ import React from "react";
 import styled from "styled-components";
 
 const CustomStyle = styled.div`
-  padding: 20px;
-  size: A4;
   width: 700px;
   height: 1000px;
+  padding: 20px;
 
   h1 {
     font-size: 3.5em;

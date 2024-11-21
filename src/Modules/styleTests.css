@@ -2,6 +2,7 @@
 
 * {
     color: rgba(0, 24, 105, 0.485);
-    background-color: #244273c1;
+    background-color: #5becff;
+    background: linear-gradient(#1d4483, #336ece, #1d4483);
     border: black;
 }

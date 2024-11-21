@@ -51,7 +51,7 @@ export const textColors = [
   },
   {
     value: "#F1E9D2",
-    label: "Paper (bkgd default)",
+    label: "Paper",
     component: styled(Option)`
       color: black;
       background-color: #f1e9d2;
@@ -91,7 +91,7 @@ export const textColors = [
   },
   {
     value: "#315BA1",
-    label: "Azure (text default)",
+    label: "Azure (default)",
     component: styled(Option)`
       color: white;
       background-color: #315ba1;
@@ -135,6 +135,138 @@ export const textColors = [
     component: styled(Option)`
       color: white;
       background-color: black;
+    `,
+  },
+];
+
+export const bgColors = [
+  {
+    value: "white",
+    label: "White",
+    component: styled(Option)`
+      color: black;
+      background-color: white;
+    `,
+  },
+  {
+    value: "#F1E9D2",
+    label: "Paper (default)",
+    component: styled(Option)`
+      color: black;
+      background-color: #f1e9d2;
+    `,
+  },
+  {
+    value: "pink",
+    label: "Pink",
+    component: styled(Option)`
+      color: black;
+      background-color: pink;
+    `,
+  },
+  {
+    value: "gold",
+    label: "Gold",
+    component: styled(Option)`
+      color: black;
+      background-color: gold;
+    `,
+  },
+  {
+    value: "cyan",
+    label: "Cyan",
+    component: styled(Option)`
+      color: black;
+      background-color: cyan;
+    `,
+  },
+  {
+    value: "greenyellow",
+    label: "Neon",
+    component: styled(Option)`
+      color: black;
+      background-color: greenyellow;
+    `,
+  },
+  {
+    value: "#315BA1",
+    label: "Azure",
+    component: styled(Option)`
+      color: white;
+      background-color: #315ba1;
+    `,
+  },
+  {
+    value: "blue",
+    label: "Blue",
+    component: styled(Option)`
+      color: white;
+      background-color: blue;
+    `,
+  },
+  {
+    value: "navy",
+    label: "Navy",
+    component: styled(Option)`
+      color: white;
+      background-color: navy;
+    `,
+  },
+  {
+    value: "purple",
+    label: "Purple",
+    component: styled(Option)`
+      color: white;
+      background-color: purple;
+    `,
+  },
+  {
+    value: "darkgreen",
+    label: "Green",
+    component: styled(Option)`
+      color: white;
+      background-color: darkgreen;
+    `,
+  },
+  {
+    value: "black",
+    label: "Black",
+    component: styled(Option)`
+      color: white;
+      background-color: black;
+    `,
+  },
+  // gradient options
+  {
+    value: "linear-gradient(to right, #fe724b, #ffdb92)",
+    label: "Gradient: Sunset",
+    component: styled(Option)`
+      color: #ffdb92;
+      background-color: #ff643d;
+    `,
+  },
+  {
+    value: "linear-gradient(to right, cyan, lightcyan)",
+    label: "Gradient: Ocean Breeze",
+    component: styled(Option)`
+      color: lightcyan;
+      background-color: darkcyan;
+    `,
+  },
+  {
+    value: "linear-gradient(to right, #00c6ff, #0072ff)",
+    label: "Gradient: Blue Sky",
+    component: styled(Option)`
+      color: #5becff;
+      background-color: #0072ff;
+    `,
+  },
+  {
+    value: "linear-gradient(to right, #6a11cb, #2575fc)",
+    label: "Gradient: Purple Blue",
+    component: styled(Option)`
+      color: #4bc1fc;
+      background-color: #6a11cb;
     `,
   },
 ];

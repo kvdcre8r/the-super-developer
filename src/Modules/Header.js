@@ -1,32 +1,36 @@
 import styled from "styled-components";
 
 const HeaderStyle = styled.header`
-  font-size: 1.5em;
   text-shadow: 2px 2px 4px #000000;
-  background-color: #244273;
   padding: 20px;
+  position: relative;
+  top: 50px;
   text-align: center;
+  font-family: 'josefin-sans';
   color: white;
   margin: 10px;
-  border: 2px solid white;
-  border-top-left-radius: 4px;
-  border-top-right-radius: 4px;
+
+  .text-container {
+    height: 100vh;
+
   h1 {
-    font-family: courgette;
-    margin: 0;
+    font-family: 'spyagency';
+    font-size: 3em;
+    color: rgb(0, 20, 94);
+    text-shadow: -1px 0 white, 0 1px white, 1px 0 white, 0 -1px white;
   }
-  p {
-    font-family: open-sans;
-    font-size: 0.8em;
-    margin: 0;
   }
 `;
 
 function Header() {
   return (
     <HeaderStyle>
-      <h1>Inspire Resume Builder</h1>
-      <p>a KVDeveloper creation</p>
+      <div className="text-container">
+        <h1>Kevin VanDonkelaar</h1>
+        <h2>THE SUPER DEVELOPER!</h2>
+        <h3>Here to save the day, one web solution at a time.</h3>
+      </div>
+      {/* add START button */}
     </HeaderStyle>
   );
 }

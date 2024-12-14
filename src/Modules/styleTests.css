@@ -1,7 +1,7 @@
 /* used to test color codes */
 
 * {
-    color: rgba(0, 24, 105, 0.485);
+    color: rgb(0, 20, 94);
     background-color: #5becff;
     background: linear-gradient(#1d4483, #336ece, #1d4483);
     border: black;

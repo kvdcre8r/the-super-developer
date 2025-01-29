@@ -1,20 +1,31 @@
-import { createGlobalStyle } from "styled-components";
+import { createGlobalStyle } from 'styled-components'
+import { keyframes } from 'styled-components'
+
+const fadeIn = keyframes`
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+`
 
 const GlobalStyles = createGlobalStyle`
     body {
+        max-width: 1024px;
         margin: 0 auto;
-        min-width: 600px;
         background-color: rgb(0, 19, 87);
-        
+        animation: ${fadeIn} 2s ease-in-out;
+        box-sizing: border-box;
+        background-color: #30599b;
+        background-image: url("../../assets/blue-code-bkgd.jpg");
+        background-size: contain;
+        font-family: 'josefin-sans';
+
         .App {
-            box-sizing: border-box;
-            background-color: #30599b;
-            background-image: url("../../assets/blue-code-bkgd.jpg");
-            background-position-x: center;
-            background-size: cover;
-            /* border: 2px solid white;
-            border-radius: 5px; */
-            font-family: 'open-sans';
+            @media screen and (max-width: 415px) {
+                font-size: 0.8em;
+            }
 
             @font-face {
                 font-family: "spyagency";
@@ -42,6 +53,6 @@ const GlobalStyles = createGlobalStyle`
             }
         }
     }
-`;
+`
 
-export default GlobalStyles;
+export default GlobalStyles

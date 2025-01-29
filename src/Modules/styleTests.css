@@ -1,8 +1,8 @@
 /* used to test color codes */
 
 * {
-    color: rgb(0, 20, 94);
-    background-color: #5becff;
+    color: rgb(0, 157, 255);
+    background-color: #0051ff;
     background: linear-gradient(#1d4483, #336ece, #1d4483);
-    border: black;
+    border: rgb(255, 0, 255);
 }

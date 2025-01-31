@@ -237,6 +237,12 @@ function Portfolio () {
             <a href='https://github.com/Kevin-VanDonkelaar-Personal-Website/kvdcre8r'>
               Github Repo
             </a>
+            <a href='https://kevin-vandonkelaar-personal-website.github.io/kvdcre8r/'>
+            v1.0
+          </a>
+          <a href='https://the-super-devloper-v2.netlify.app/'>
+            v2.0
+          </a>
             <ul>
               <li>
                 Single page application featuring themed sections presenting

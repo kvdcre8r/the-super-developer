@@ -80,7 +80,7 @@ function Nav () {
     <NavStyle>
       <div className='nav'>
         <Link to='header' smooth={true} duration={500} className='pic'>
-        <img src='../assets/profilePic.png' alt='Kevin VanDonkelaar' />
+        <img src='../profilePic.png' alt='Kevin VanDonkelaar' />
         </Link>
         <Link to='header' smooth={true} duration={500} className='name'>
           Kevin VanDonkelaar

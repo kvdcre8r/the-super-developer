@@ -152,7 +152,7 @@ function Portfolio () {
           </div>
           <div className='portfolio-descs'>
             <p>
-              Current project in development, a resume builder application that
+              My most recent project, a resume builder application that
               allows users to create and customize their own resumes
             </p>
             <a href='https://kvdeveloper-resume-builder.netlify.app/'>
@@ -171,8 +171,7 @@ function Portfolio () {
                 their resume
               </li>
               <li>
-                Will feature the ability to save, print, and export resumes in
-                various formats
+                Features the ability for users to save their custom resume as a PDF file to their local device
               </li>
             </ul>
           </div>

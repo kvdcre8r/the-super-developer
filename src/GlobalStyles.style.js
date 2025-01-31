@@ -12,7 +12,6 @@ const fadeIn = keyframes`
 
 const GlobalStyles = createGlobalStyle`
     body {
-        max-width: 1024px;
         margin: 0 auto;
         background-color: rgb(0, 19, 87);
         animation: ${fadeIn} 2s ease-in-out;
@@ -23,6 +22,10 @@ const GlobalStyles = createGlobalStyle`
         font-family: 'josefin-sans';
 
         .App {
+
+            @media screen and (max-width: 550px) {
+                font-size: 0.9em;
+            }
             @media screen and (max-width: 415px) {
                 font-size: 0.8em;
             }
@@ -31,22 +34,18 @@ const GlobalStyles = createGlobalStyle`
                 font-family: "spyagency";
                 src: url(../../assets/spyagency.ttf);
             }
-
             @font-face {
                 font-family: "champion";
                 src: url(../../assets/champion.ttf);
             }
-            
             @font-face {
                 font-family: "open-sans";
                 src: url(../../assets/OpenSans.ttf);
             }
-            
             @font-face {
                 font-family: "courgette";
                 src: url(../../assets/courgette.ttf);
             }
-            
             @font-face {
                 font-family: "josefin-sans";
                 src: url(../../assets/JosefinSans.ttf);

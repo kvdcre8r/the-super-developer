@@ -292,7 +292,7 @@ function About () {
           className='details'
           style={{ animationPlayState: aboutInView ? 'running' : 'paused' }}
         >
-          <img src='../assets/profilePic.png' alt='Kevin VanDonkelaar' />
+          <img src='../profilePic.png' alt='Kevin VanDonkelaar' />
           <h2>CHARACTER BIO:</h2>
           <h4>Location:</h4>
           <li>O'Fallon, MO</li>

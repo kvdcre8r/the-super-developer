@@ -23,6 +23,7 @@ const FooterStyle = styled.div`
       a {
         color: inherit;
         text-decoration: none;
+        padding-left: 5px;
         &:hover {
           color: white;
           text-decoration: underline;

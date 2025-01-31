@@ -34,10 +34,6 @@ const HeaderStyle = styled.header`
     text-shadow: -1px 0 lightgreen, 0 1px lightgreen, 1px 0 lightgreen,
       0 -1px lightgreen;
 
-    @media screen and (max-width: 550px) {
-      font-size: 0.7em;
-    }
-
     h2:nth-child(1) {
       animation: ${slideIn} 1s ease-in-out;
       animation-delay: 1s;
@@ -55,10 +51,16 @@ const HeaderStyle = styled.header`
       color: rgb(0, 17, 76);
       text-shadow: -1px 0 rgb(255, 119, 0), 0 2.5px rgb(255, 119, 0),
         2.5px 0 rgb(255, 119, 0), 0 -1px rgb(255, 119, 0);
-        @media screen and (max-width: 340px) {
+
+      @media screen and (max-width: 500px) {
         font-size: 2.5em;
       }
-
+      @media screen and (max-width: 400px) {
+        font-size: 2em;
+      }
+      @media screen and (max-width: 320px) {
+        font-size: 1.8em;
+      }
     }
 
     h2:nth-child(3) {
@@ -71,10 +73,6 @@ const HeaderStyle = styled.header`
     h2 {
       text-shadow: -0.5px 0 lightgreen, 0 1px lightgreen, 1px 0 lightgreen,
         0 -0.5px lightgreen;
-        @media screen and (max-width: 550px) {
-        font-size: 2em;
-      }
-
     }
 
     h3 {
@@ -109,10 +107,6 @@ const HeaderStyle = styled.header`
 
       &:hover {
         background-color: blue;
-      }
-
-      @media screen and (max-width: 415px) {
-        font-size: 2.5em;
       }
     }
   }

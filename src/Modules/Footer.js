@@ -39,7 +39,7 @@ function Footer () {
       <div className='footer'>
         <div className='name'>
           The Super Developer v3.0 | &copy; 2024 Kevin VanDonkelaar | Previous
-          versions available here:{' '}
+          versions available here:
           <a href='https://kevin-vandonkelaar-personal-website.github.io/kvdcre8r/'>
             v1.0
           </a>

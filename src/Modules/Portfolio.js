@@ -158,7 +158,7 @@ function Portfolio () {
             <a href='https://kvdeveloper-resume-builder.netlify.app/'>
               Website
             </a>
-            <a href='https://github.com/kvdcre8r/my-resume-builder'>
+            <a href='https://github.com/kvdcre8r/resume-builder'>
               Github Repo
             </a>
             <ul>
@@ -233,13 +233,13 @@ function Portfolio () {
               Personal brand website demonstrating the knowledge and skills
               necessary for success in web development and design
             </p>
-            <a href='https://github.com/Kevin-VanDonkelaar-Personal-Website/kvdcre8r'>
+            <a href='https://github.com/kvdcre8r/the-super-developer'>
               Github Repo
             </a>
             <a href='https://kevin-vandonkelaar-personal-website.github.io/kvdcre8r/'>
             v1.0
           </a>
-          <a href='https://the-super-devloper-v2.netlify.app/'>
+          <a href='https://kvd-website-v2.netlify.app/'>
             v2.0
           </a>
             <ul>

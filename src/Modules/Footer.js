@@ -43,7 +43,7 @@ function Footer () {
           <a href='https://kevin-vandonkelaar-personal-website.github.io/kvdcre8r/'>
             v1.0
           </a>
-          <a href='https://the-super-devloper-v2.netlify.app/'>
+          <a href='https://kvd-website-v2.netlify.app/'>
             v2.0
           </a>
         </div>

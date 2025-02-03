@@ -1,7 +1,7 @@
 import React from 'react'
 import styled, { keyframes } from 'styled-components'
 import { useInView } from 'react-intersection-observer'
-import { Link } from 'react-scroll'
+import Button from './Button'
 
 const fadeIn = keyframes`
   from {
@@ -98,31 +98,6 @@ const PortfolioStyle = styled.div`
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-
-    a {
-      font-size: 32px;
-      padding: 10px;
-      border-width: 1px 2px 2px 1px;
-      border-style: solid;
-      border-color: yellow;
-      border-radius: 5px;
-      background-color: rgb(0, 25, 117);
-      position: relative;
-      top: 50px;
-      color: yellow;
-      text-shadow: -1px 0 darkblue, 0 1px darkblue, 1px 0 darkblue,
-        0 -1px darkblue;
-      cursor: pointer;
-      font-family: 'spyagency';
-
-      &:hover {
-        background-color: blue;
-      }
-
-      @media screen and (max-width: 415px) {
-        font-size: 20px;
-      }
-    }
   }
 `
 
@@ -152,15 +127,13 @@ function Portfolio () {
           </div>
           <div className='portfolio-descs'>
             <p>
-              My most recent project, a resume builder application that
-              allows users to create and customize their own resumes
+              My most recent project, a resume builder application that allows
+              users to create and customize their own resumes
             </p>
             <a href='https://kvdeveloper-resume-builder.netlify.app/'>
               Website
             </a>
-            <a href='https://github.com/kvdcre8r/resume-builder'>
-              Github Repo
-            </a>
+            <a href='https://github.com/kvdcre8r/resume-builder'>Github Repo</a>
             <ul>
               <li>
                 Receives user input and dynamically generates a resume based on
@@ -171,7 +144,8 @@ function Portfolio () {
                 their resume
               </li>
               <li>
-                Features the ability for users to save their custom resume as a PDF file to their local device
+                Features the ability for users to save their custom resume as a
+                PDF file to their local device
               </li>
             </ul>
           </div>
@@ -237,11 +211,9 @@ function Portfolio () {
               Github Repo
             </a>
             <a href='https://kevin-vandonkelaar-personal-website.github.io/kvdcre8r/'>
-            v1.0
-          </a>
-          <a href='https://kvd-website-v2.netlify.app/'>
-            v2.0
-          </a>
+              v1.0
+            </a>
+            <a href='https://kvd-website-v2.netlify.app/'>v2.0</a>
             <ul>
               <li>
                 Single page application featuring themed sections presenting
@@ -262,9 +234,7 @@ function Portfolio () {
         </article>
       </div>
       <div className='continue-btn'>
-        <Link to='contact' smooth={true} duration={500}>
-          Next: Contact Info
-        </Link>
+        <Button to='contact' text='Next: Contact Info' />
       </div>
     </PortfolioStyle>
   )

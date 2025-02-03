@@ -1,15 +1,6 @@
 import React from 'react'
 import styled, { keyframes } from 'styled-components'
-import { Link } from 'react-scroll'
-
-const fadeIn = keyframes`
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
-`
+import Button from './Button'
 
 const slideIn = keyframes`
   from {
@@ -85,30 +76,6 @@ const HeaderStyle = styled.header`
       position: relative;
       top: 15px;
     }
-
-    a {
-      animation: ${fadeIn} 0.5s ease-in-out;
-      animation-delay: 8s;
-      opacity: 0;
-      animation-fill-mode: forwards;
-      font-size: 32px;
-      padding: 10px;
-      border-width: 1px 2px 2px 1px;
-      border-style: solid;
-      border-color: yellow;
-      border-radius: 5px;
-      background-color: rgb(0, 25, 117);
-      position: relative;
-      top: 50px;
-      color: yellow;
-      text-shadow: -1px 0 darkblue, 0 1px darkblue, 1px 0 darkblue,
-        0 -1px darkblue;
-      cursor: pointer;
-
-      &:hover {
-        background-color: blue;
-      }
-    }
   }
 `
 
@@ -116,13 +83,11 @@ function Header () {
   return (
     <HeaderStyle>
       <div className='text-container'>
-        <h2>introducing ...</h2>
-        <h1>Kevin VanDonkelaar</h1>
-        <h2>The Super Developer !</h2>
-        <h3>Saving the day, one web solution at a time.</h3>
-        <Link to='about' smooth={true} duration={500}>
-          Enter
-        </Link>
+          <h2>introducing ...</h2>
+          <h1>Kevin VanDonkelaar</h1>
+          <h2>The Super Developer !</h2>
+          <h3>Saving the day, one web solution at a time.</h3>
+          <Button to='about' text='Enter' />
       </div>
     </HeaderStyle>
   )

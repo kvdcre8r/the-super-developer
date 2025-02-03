@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 import { useInView } from 'react-intersection-observer'
-import { Link } from 'react-scroll'
+import Button from './Button'
 
 const AboutStyle = styled.div`
   text-shadow: 2px 2px 4px #000000;
@@ -41,8 +41,8 @@ const AboutStyle = styled.div`
     color: rgb(0, 20, 94);
     text-shadow: -0.5px 0 white, 0 1px white, 1px 0 white, 0 -0.5px white;
     @media screen and (max-width: 415px) {
-        font-size: 2em;
-      }
+      font-size: 2em;
+    }
   }
 
   .about-content {
@@ -156,31 +156,6 @@ const AboutStyle = styled.div`
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-
-    a {
-      font-size: 32px;
-      padding: 10px;
-      border-width: 1px 2px 2px 1px;
-      border-style: solid;
-      border-color: yellow;
-      border-radius: 5px;
-      background-color: rgb(0, 25, 117);
-      position: relative;
-      top: 50px;
-      color: yellow;
-      text-shadow: -1px 0 darkblue, 0 1px darkblue, 1px 0 darkblue,
-        0 -1px darkblue;
-      cursor: pointer;
-      font-family: 'spyagency';
-
-      &:hover {
-        background-color: blue;
-      }
-
-      @media screen and (max-width: 415px) {
-        font-size: 20px;
-      }
-    }
   }
 `
 
@@ -317,9 +292,7 @@ function About () {
         </article>
       </div>
       <div className='continue-btn'>
-        <Link to='portfolio' smooth={true} duration={500}>
-          Next: Portfolio
-        </Link>
+        <Button to='portfolio' text='Next: Portfolio' />
       </div>
     </AboutStyle>
   )

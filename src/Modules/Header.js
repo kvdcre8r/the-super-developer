@@ -1,6 +1,6 @@
 import React from 'react'
 import styled, { keyframes } from 'styled-components'
-import Button from './Button'
+import Button from './Components/button'
 
 const slideIn = keyframes`
   from {

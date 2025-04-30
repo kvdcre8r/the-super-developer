@@ -1,7 +1,7 @@
 import React from 'react'
 import styled, { keyframes } from 'styled-components'
 import { useInView } from 'react-intersection-observer'
-import Button from './Button'
+import Button from './Components/button'
 
 const fadeIn = keyframes`
   from {
@@ -38,11 +38,6 @@ const PortfolioStyle = styled.div`
     @media screen and (max-width: 700px) {
       flex-direction: column;
     }
-
-    a {
-      color: greenyellow;
-      padding-right: 10px;
-    }
   }
 
   h1 {
@@ -66,28 +61,33 @@ const PortfolioStyle = styled.div`
       display: flex;
       flex-direction: column;
       align-items: center;
-    }
 
-    h2 {
-      color: greenyellow;
-    }
+      h2 {
+        color: greenyellow;
+      }
 
-    li {
-      padding: 3px;
-    }
-
-    .images {
-      animation: ${fadeIn} 2s ease-in-out;
-      width: 40vw;
-      border-radius: 3px;
-      padding: 1px;
-      border: 2px solid white;
-      margin: 10px;
+      .images {
+        animation: ${fadeIn} 2s ease-in-out;
+        width: 40vw;
+        border-radius: 3px;
+        padding: 1px;
+        border: 2px solid white;
+        margin: 10px;
+      }
     }
 
     .portfolio-descs {
       animation: ${fadeIn} 2s ease-in-out;
       padding-left: 20px;
+
+      a {
+        color: greenyellow;
+        padding-right: 10px;
+      }
+
+      li {
+        padding: 3px;
+      }
     }
   }
 
@@ -115,10 +115,53 @@ function Portfolio () {
           style={{ animationPlayState: portfolioInView ? 'running' : 'paused' }}
         >
           <div className='name-pic'>
+            <h2>Family Archive</h2>
+            <img
+              className='images'
+              src='../assets/Screenshot-Family-Archive.png'
+              alt='screenshot of family archive project'
+              style={{
+                animationPlayState: portfolioInView ? 'running' : 'paused'
+              }}
+            />
+          </div>
+          <div className='portfolio-descs'>
+            <p>
+              My current project, a family archive website, is a personal
+              endeavor to create a digital repository for my family's history
+              and memories. The project is still in progress, but I am excited
+              to share my progress and the functionality I have implemented so
+              far.
+            </p>
+            <a href='https://kvdeveloper-resume-builder.netlify.app/'>
+              Website
+            </a>
+            <a href='https://github.com/kvdcre8r/resume-builder'>Github Repo</a>
+            <ul>
+              <li>
+                Designed to be user-friendly and visually appealing, with a
+                focus on accessibility and ease of navigation.
+              </li>
+              <li>
+                Features a clean and modern design, with a responsive layout
+                that adapts to different screen sizes.
+              </li>
+              <li>
+                Built using HTML, CSS, and JavaScript, with a focus on clean and
+                efficient code.
+              </li>
+            </ul>
+          </div>
+        </article>
+
+        <article
+          style={{ animationPlayState: portfolioInView ? 'running' : 'paused' }}
+        >
+          <div className='name-pic'>
             <h2>Custom Resume Builder</h2>
             <img
               className='images'
-              src='../assets/Screenshot-Resume-Builder.png'
+              src='../assets/Screenshot-Resume-Builder-new.png'
               alt='screenshot of my resume builder project'
               style={{
                 animationPlayState: portfolioInView ? 'running' : 'paused'
@@ -127,8 +170,8 @@ function Portfolio () {
           </div>
           <div className='portfolio-descs'>
             <p>
-              My most recent project, a resume builder application that allows
-              users to create and customize their own resumes
+              A resume builder application that allows users to create and
+              customize their own resumes
             </p>
             <a href='https://kvdeveloper-resume-builder.netlify.app/'>
               Website

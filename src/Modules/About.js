@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 import { useInView } from 'react-intersection-observer'
-import Button from './Button'
+import Button from './Components/button'
 
 const AboutStyle = styled.div`
   text-shadow: 2px 2px 4px #000000;

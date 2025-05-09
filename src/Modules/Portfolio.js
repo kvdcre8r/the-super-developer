@@ -133,10 +133,10 @@ function Portfolio () {
               to share my progress and the functionality I have implemented so
               far.
             </p>
-            <a href='https://kvdeveloper-resume-builder.netlify.app/'>
+            <a href='https://vandonkelaar-archive.netlify.app/'>
               Website
             </a>
-            <a href='https://github.com/kvdcre8r/resume-builder'>Github Repo</a>
+            <a href='https://github.com/kvdcre8r/vandonkelaar-archive'>Github Repo</a>
             <ul>
               <li>
                 Designed to be user-friendly and visually appealing, with a
